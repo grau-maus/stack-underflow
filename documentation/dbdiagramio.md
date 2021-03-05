@@ -5,6 +5,7 @@ Table users {
   id int [pk] // auto-increment
   username string [not null]
   email string [not null, unique]
+  hashedPassword string [not null]
   created_at timestamp [not null]
   updated_at timestamp [not null]
 }
