@@ -1,11 +1,11 @@
-// ./views/single-question.pug 
+// ./views/single-question.pug
 
-extends layout 
+extends layout
 includes utils.pug
 
-block content 
+block content
     h2(class=''): em for #{title}
      +validationErrorSummary(errors)
-     div 
+     div
         p question.content
      form(action=`/answer/${question.id}` method='post')
