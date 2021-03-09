@@ -1,9 +1,24 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
+const {check, validationResult } = require('express-validator'); // do i need validation res
+const app = require('../app');
 
-/* GET users listing. WE MAY NOT use this */
-router.get('/users', function(req, res, next) {
-  res.send('respond with a resource');
-});
-router.use();
+// we'll need signup validators, questions & answers validators
+const loginValidators = [
+    check('email')
+        .exists({ checkFalsey: true})
+        .withMessage('You did not enter a valid email'),
+    check('password')
+        .exists({checkFalsey: true})
+        .withMessage('The necros do not approve of this password')
+];
+
+router.get('/login', csrfProtection, asyncHandler(async(req, res) => {
+    res.render('login', {
+        title: 'Login',
+        csrfToken: req.csrfToken()
+    })
+}))
+
+router.post('/login')
 module.exports = router;
