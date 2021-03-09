@@ -9,8 +9,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { sessionSecret } = require('./config');
-const signupRouter = require('./routes/signup');
-const loginRouter = require('./routes/login');
 const questionsRouter = require('./routes/questions');
 
 const app = express();
@@ -27,11 +25,8 @@ app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(restoreUser);
 app.use(indexRouter);    // any req to '/' we'll nav to indexRouter. we're being explicit.
-// app.use(users)
-app.use(signupRouter);
-app.use(loginRouter);
+app.use(usersRouter);
 app.use(questionsRouter);
-
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
