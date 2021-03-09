@@ -8,11 +8,12 @@ const { csrfProtection, asyncHandler } = require('./utils');
 
 const router = express.Router;
 
-router.length('/question/:id(\\d+)', asyncHandler(async(req, res) => {
+router.get('/question/:id(\\d+)', asyncHandler(async(req, res) => {
+
     const questionId = parseInt(req.params.id, 10);
-    const question = await Question.findByPk(questionId, {include: [{ model: User, as: 'necro'}, { model: Answer, as: 'underflow'}, { model: Vote, as: 'vote'}
+    const question = await Question.findByPk(questionId, {include: [{ model: User, as: 'user'}, { model: Answer, as: 'answer'}, { model: Vote, as: 'vote'}
     ]});
-    res.render('single-question', {title: question.title, question});
+    res.render('questions-single', {title: question.title, question});
 }))
 
 
