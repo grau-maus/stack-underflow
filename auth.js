@@ -9,7 +9,7 @@ const logoutUser = (req, res) => {
 
 const requireAuth = (req, res, next) => {
     if(!res.locals.authenticated){   //if not authenticated then goes
-        return res.redirect('/user/login')
+        return res.redirect('/login')    // '/user/login'
     }
     return next();
 }
@@ -21,13 +21,14 @@ const restoreUser = async(req, res, next) => {
 
         try{
             const user = await db.User.findByPk(userId);
-            if(user){   
+            if(user){
                 res.locals.authenticated = true;
                 res.locals.user = user;
                 next();
             }
         } catch(e) {
             res.locals.authenticated = false;
+
             next(e);
          }
 
