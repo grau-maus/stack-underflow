@@ -26,37 +26,35 @@ router.get('/login-form', csrfProtection, asyncHandler(async(req, res) => {
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, res) => {
   const { email, password } = req.body
   // we need validation errors to check validation results(req)
-  const validationErrors = validationResult(req);       // array that we'll handle each of them on  line 53
-  console.log(validationErrors);
+  const validatorErrors = validationResult(req);          // array that we'll handle each of them on  line 53
+
+  console.log(validatorErrors);
   let errors = [];
 
-if (validationErrors.isEmpty()) {
-  const user = await db.User.findOne({ where: { username } });
-  if (user) {
-    const isValid = await bcrypt.compare(      // comparing what the person inputed w/the hashedP
+if (validatorErrors.isEmpty()) {
+  const user = await db.User.findOne({ where: { email } });
+  if (user !== null) {    // if the user exists in our db
+    const isValid = await bcrypt.compare(                  // comparing what the person inputed w/the hashedP
       password,
       user.hashedPassword.toString()
   );
-    if (isValid) {
+    if (isValid) {           // if the password and hashed match
       loginUser(req, res, user);
-      return req.session.save((e) => {
-        console.log(e);
-        res.redirect('/');
-    });
-    } else {
-      errors.push('Username password combination not valid');
+      return res.redirect('/')
     }
-  } else {
-    errors.push('Username password combination not valid');
+    errors.push("The underflow has no use for you. Email address and password failed.")
+
   }
 } else {   //if not empty
-  // errors.push("something")
+
   errors = validatorErrors.array().map((error) => error.msg);    //only the validatorErrors
   console.log(errors)
   res.render('login-form', {
+    title: 'Login',  
     errors,
     csrfToken: req.csrfToken(),
-    username
+    email
+
   })
 }
 }));
