@@ -1,18 +1,18 @@
 mixin validationErrorSummary(errors)
   if errors
-    div(class='' role='alert')
+    div(class='alert alert-error' role='alert')
       p The following error(s) occurred:
       ul
         each error in errors
           li= error
 
 mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = null)
-  div(class='')
+  div(class='form-group')
     label(for=fieldName)= labelText
     if fieldType === 'textarea'
-      textarea(id=fieldName name=fieldName class='' rows='5')= fieldValue
+      textarea(id=fieldName name=fieldName class='form-control' rows='5')= fieldValue
     else
-      input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='')
+      input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder class='form-control')
 
 
-// DON'T FORGET TO FIX THE CLASSES!!
+//-  DON'T FORGET TO FIX THE CLASSES!!!!!!!!!!!!!!!!
