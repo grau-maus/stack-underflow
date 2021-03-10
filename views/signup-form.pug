@@ -1,14 +1,23 @@
+//- ./views/signup-form.pug
+
 extends layout
-include utils
+include utils.pug
+
 block content
     +validationErrorSummary(errors)
-    form(action='/signup', method='post')
-        input(type= 'hidden', name='_csrf', value=csrfToken)
-        +field('Display Name', 'username', 'user', users.name)
-        +field('Email Address','email', email, users.email)
-        +field('Password', 'password', null, users.password)
+    form.signup-form
+        fieldset 
+        legend Signup
+        input(type= 'text', name='username', placeholder='display name')
+        input(type= 'text', name='email', placeholder='email')
+        input(type= 'password', name='password', placeholder='password')
+        input(type= 'password', name='confirm-password', placeholder='confirm password')
+        select(name='userId')
         div(class= 'login-register-buttons')
             button(type='submit', class= 'login-register') Login
             button(type= 'submit', class= 'login-register-demo') Demo User Login
+
     div
-        p: a(href="/signup") Don't have an account? Sign up
+        p: a(href="/login-form") Have an account and missed ALL the login links? LOGIN
+
+    footer

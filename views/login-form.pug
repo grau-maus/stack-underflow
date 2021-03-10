@@ -1,13 +1,21 @@
+//- ./views/login-form.pug
+
 extends layout
+include utils.pug
+
 block content
     +validationErrorSummary(errors)
-    form(action='/login', method='post')
-        input(type= 'hidden', name='_csrf', value=csrfToken)
-        +field('Email Address','email', email, user.email)
-        +field('Password', 'password', null, user.password)
+    form.login-form
+        //- fieldset 
+        legend Log In
+        input(type= 'text', name='email', placeholder='email')
+        input(type= 'password', name='password', placeholder='password')
+        select(name='userId')
         div(class= 'login-register-buttons')
             button(type='submit', class= 'login-register') Login
             button(type= 'submit', class= 'login-register-demo') Demo User Login
 
     div
-        p: a(href="/signup") Don't have an account? Sign up
+        p: a(href="/signup") Not in the Underflow? Sign up
+
+    footer

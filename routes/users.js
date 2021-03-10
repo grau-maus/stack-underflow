@@ -101,7 +101,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async(req, r
 //LOG IN ROUTES
 
 router.get('/login-form', csrfProtection, asyncHandler(async(req, res) => {
-  res.render('login', {
+  res.render('login-form', {
       title: 'Login',
       csrfToken: req.csrfToken()
   })
