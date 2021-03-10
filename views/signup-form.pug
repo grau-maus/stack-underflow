@@ -1,21 +1,22 @@
 //- ./views/signup-form.pug
 
-extends layout
+extends index
 include utils.pug
 
-block content
+block display
     +validationErrorSummary(errors)
-    form.signup-form
-        fieldset 
+    form(action='/signup', class='signup-form', method='post')
         legend Signup
+        input(type='hidden' name='_csrf' value=csrfToken)
         input(type= 'text', name='username', placeholder='display name')
         input(type= 'text', name='email', placeholder='email')
         input(type= 'password', name='password', placeholder='password')
         input(type= 'password', name='confirm-password', placeholder='confirm password')
-        select(name='userId')
         div(class= 'login-register-buttons')
-            button(type='submit', class= 'login-register') Login
-            button(type= 'submit', class= 'login-register-demo') Demo User Login
+            button(type='submit', class= 'login-register') Signup
+
+    form(action='/demo', class='demo-user', method='get')
+        button(type= 'submit', class= 'login-register-demo') Demo User Login
 
     div
         p: a(href="/login-form") Have an account and missed ALL the login links? LOGIN

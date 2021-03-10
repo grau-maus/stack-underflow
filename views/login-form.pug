@@ -1,16 +1,16 @@
 //- ./views/login-form.pug
 
-extends layout
+extends index
 include utils.pug
 
-block content
+block display
     +validationErrorSummary(errors)
-    form.login-form
+    form(action='/login', class='login-form', method='post')
         //- fieldset 
         legend Log In
+        input(type='hidden' name='_csrf' value=csrfToken)
         input(type= 'text', name='email', placeholder='email')
         input(type= 'password', name='password', placeholder='password')
-        select(name='userId')
         div(class= 'login-register-buttons')
             button(type='submit', class= 'login-register') Login
             button(type= 'submit', class= 'login-register-demo') Demo User Login
