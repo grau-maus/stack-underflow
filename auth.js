@@ -8,29 +8,30 @@ const logoutUser = (req, res) => {
 }
 
 const requireAuth = (req, res, next) => {
-    if(!res.locals.authenticated){   //if not authenticated then goes
+    if (!res.locals.authenticated) {   //if not authenticated then goes
         return res.redirect('/login')    // '/user/login'
     }
     return next();
 }
 
-const restoreUser = async(req, res, next) => {
-    console.log(req)
-    if(req.session.auth){
+const restoreUser = async (req, res, next) => {
+    console.log(req.session)
+  
+    if (req.session.auth) {
         const { userId } = req.session.auth  // the user is logged in w/every page they navigate to
 
-        try{
+        try {
             const user = await db.User.findByPk(userId);
-            if(user){
+            if (user) {
                 res.locals.authenticated = true;
                 res.locals.user = user;
                 next();
             }
-        } catch(e) {
+        } catch (e) {
             res.locals.authenticated = false;
 
             next(e);
-         }
+        }
 
     } else {
         res.locals.authenticated = false;

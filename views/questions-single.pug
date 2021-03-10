@@ -1,11 +1,37 @@
-// ./views/single-question.pug 
+// ./views/single-question.pug
 
-extends layout 
+extends layout
 includes utils.pug
 
-block content 
-    h2(class=''): em for #{title}
-     +validationErrorSummary(errors)
-     div 
-        p question.content
-     form(action=`/answer/${question.id}` method='post')
+block content
+   +validationErrorSummary(errors)
+   div(class='question-header')
+    h2(class='question-header-title'): em for #{title}
+    a(href='/question-form')
+     div Ask A Question
+   div(class='left-side-bar')
+    a(href='/')
+      div Homepage
+    a(href='http://github.com')
+      div Find the underverse
+   div(class='question-body')
+      div Asked: #{question.updatedAt}
+      div(class='question-body-content')
+         if !hasVoted
+            form(action=`/questions/${question.id}/downvotes`, method='post')
+               button(type='submit', class='question-body-content-downvote')
+         else
+            form(action=`/questions/${question.id}/downvotes`, method='delete')
+               button(type='submit', class='question-body-content-downvote')
+         div: p #{question.content}
+      div(class='question-body-answer-form')
+         form(action=`/questions/${question.id}/answers`, method=`post`)
+            label(for='answerContent') Add Answer:
+            textarea(name='answerContent', value=question.content)
+            button(type='submit') Post Answer
+      div(class='question-body-answers')
+
+         for answer in question.Answers
+   div
+      p question.content
+   form(action=`/answer/${question.id}` method='post')

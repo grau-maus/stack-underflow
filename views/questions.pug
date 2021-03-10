@@ -1,1 +1,23 @@
 //- if they arent authenticated user then we'll render page w/o voting or answering, otherwise everything
+extends layout
+
+block content
+  div(class='left-side-bar')
+    a(href='/')
+      div Homepage
+    a(href='http://github.com')
+      div Find the underverse
+  for question in questions
+    a(href=`/questions/${question.id}`)
+      div(class='container')
+        div(class='question-vote-answer')
+          div  #{question.Votes.length}
+          div  #{question.Answers.length}
+        div(class='question')
+          h3 #{question.title}
+        div(class='user')
+          div #{question.User.username}
+  div(class='footer')
+    div Contact info:
+    a(href='http://stackoverflow.com')
+      div Stack Overflow
