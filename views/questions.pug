@@ -1,23 +1,45 @@
 //- if they arent authenticated user then we'll render page w/o voting or answering, otherwise everything
 extends layout
-
+//- include utils.pug
 block content
-  //- div(class='left-side-bar')
-  //-   a(href='/')
-  //-     div Homepage
-  //-   a(href='http://github.com')
-  //-     div Find the underverse
-  for question in questions
-    a(href=`/questions/${question.id}`)
-      div(class='container')
-        div(class='question-vote-answer')
-          div  #{question.Votes.length}
-          div  #{question.Answers.length}
-        div(class='question')
-          h3 #{question.title}
-        div(class='user')
-          div #{question.User.username}
-  div(class='footer')
-    div Contact info:
-    a(href='http://stackoverflow.com')
-      div Stack Overflow
+   //- +validationErrorSummary(errors)
+   div(class='question-header') HEADER
+    h2(class='question-header-title'): em for #{title}
+    a(href='/question-form')
+     div Ask A Question
+   div(class='left-side-bar')
+    a(href='/')
+      div Homepage
+    a(href='http://github.com')
+      div Find the underverse
+   div(class='right-side-bar'): p Index of Questions
+      ul
+         each question in questions
+            li #{question.title}
+   div Title: #{title}
+      a(href="/questions/form")
+         button(type="submit") Ask a Question
+   div(class="single-question-body-container")
+      div(class='question-body')
+         div Asked: #{question.updatedAt}
+         div(class='question-body-content')
+            if !hasVoted
+               form(action=`/questions/${question.id}/downvotes`, method='post')
+                  button(type='submit', class='question-body-content-downvote')
+            else
+               form(action=`/questions/${question.id}/downvotes`, method='delete')
+                  button(type='submit', class='question-body-content-downvote')
+            div: p #{question.content}
+               button(type="submit") Downvote
+         div(class='question-body-answer-form')
+            form(action=`/questions/${question.id}/answers`, method=`post`)
+               label(for='answerContent') Add Answer:
+               textarea(name='answerContent', value=question.content)
+               button(type='submit') Post Answer
+         div(class='question-body-answers')
+            //- for answer in question.Answers
+         div
+         p #{question.content}
+            p #{question.Answers[0].content} (This is an example of an answer.)
+               button(type="submit") Upvote
+         form(action=`/answer/${question.id}` method='post')
