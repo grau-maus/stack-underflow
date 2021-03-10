@@ -8,14 +8,14 @@ module.exports = {
     return queryInterface.bulkInsert('Questions', [
       {
         title: 'TEST QUESTION',
-        content: 'asdf;laksjg;34wohgjo3ihohouasfdg',
+        content: 'THIS IS A TEST QUESTION 1',
         userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         title: 'WHAT ARE magnets',
-        content: 'ao;ihjgopiwrhghrh43y0ih',
+        content: 'THIS IS A TEST QUESTION 2',
         userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()

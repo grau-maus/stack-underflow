@@ -23,20 +23,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(restoreUser);
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
-    //name: 'stack_underflow_app.sid',
+    // name: 'stack_underflow_app.sid',
     secret: sessionSecret,
     store,
     saveUninitialized: false,
     resave: false,
   })
 );
+app.use(restoreUser);
 
 app.use(indexRouter);    // any req to '/' we'll nav to indexRouter. we're being explicit.
 app.use(usersRouter);
