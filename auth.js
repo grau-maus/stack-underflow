@@ -15,7 +15,7 @@ const requireAuth = (req, res, next) => {
 }
 
 const restoreUser = async(req, res, next) => {
-    console.log(req.session)
+    console.log(req)
     if(req.session.auth){
         const { userId } = req.session.auth  // the user is logged in w/every page they navigate to
 

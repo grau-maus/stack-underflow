@@ -5,23 +5,116 @@ const {check, validationResult } = require('express-validator'); // a method we 
 const app = require('../app');
 const db = require('../db/models')
 const { loginUser } = require('../auth')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+//const user = require('../db/models/user');
 
-const loginValidators = [
-    check('email')  //by default checks @
-        .exists({ checkFalsey: true})
-        .withMessage('You did not enter a valid email'),
-    check('password')
-        .exists({checkFalsey: true})
-        .withMessage('The necros do not approve of this password')
-];
+//SIGN UP FORM
+
+router.get('/signup', csrfProtection, (req, res) => {
+  const {
+    username,
+    email,
+    password,
+    } = req.body;
+
+  const user = db.User.build();
+  res.render('signup-form', {
+    title: 'Sign up',
+    email,
+    csrfToken: req.csrfToken()
+  })
+})
+
+const userValidators = [
+  check('displayName')
+    .exists( { checkFalsy: true})
+    .withMessage("Please provide what we will call you in the underflow")
+    .isLength({ max: 50 })
+    .withMessage("Name must be no more than 50 characters"),
+  check('email')
+    .exists( {checkFalsy: true })
+    .withMessage("Please provide a valid email address")
+    .isLength({ max: 255 })
+    .withMessage("The underflow has deemed your email address way too long")
+    .isEmail()
+    .withMessage("Email address is not valid email")
+    .custom((value) => {
+      return db.User.findOne({ where: {email: value} })
+      .then((user) => {
+        if (user) {
+          return Promise.reject("The provided email address is already in use by another account")
+        }
+      });
+    }),
+  check('password')
+    .exists( {checkFalsy: true })
+    .withMessage("You may not dive into the underflow without a password!")
+    .isLength({ max: 50 })
+    .withMessage("We said a password... not a novel.")
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(3=.*[0-9])(1=.*[!@#$%^&*])(1='a')/, 'g')  //why is this 'g' here?
+    .withMessage("Password must contain at least 3 numbers, one letter 'a' and one special character"),
+  check('confirmPassword')
+    .exists({ checkFalsy: true })
+    .withMessage("Type it again, I dare you...")
+    .isLength( { max: 50 })
+    .withMessage("Act right, you know you will not remember that")
+    .custom((value, { req}) => {
+      if(value !== req.body.password) {
+        throw new Error("You couldn't type it twice??? They don't match...")
+      }
+      return true;
+    })
+]
+
+router.post('/signup', csrfProtection, userValidators, asyncHandler(async(req, res) => {
+  const {
+    username,
+    email,
+    password,
+    } = req.body;
+
+  const user = db.User.build({
+    username,
+    email
+  });
+
+  const validatorErrors = validationResult(req)
+
+  if (validatorErrors.isEmpty()){
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.hashedPassword = hashedPassword
+    await user.save();
+    loginUser(req, res, user)
+    res.redirect('/');
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('signup-form', {
+      title: "Sign up",
+      username,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
+  }
+}))
+
+
+//LOG IN ROUTES
 
 router.get('/login-form', csrfProtection, asyncHandler(async(req, res) => {
-    res.render('login', {
-        title: 'Login',
-        csrfToken: req.csrfToken()
-    })
+  res.render('login', {
+      title: 'Login',
+      csrfToken: req.csrfToken()
+  })
 }))
+
+const loginValidators = [
+  check('email')  // if there is some input in the email box.
+      .exists({ checkFalsy: true})
+      .withMessage('You did not enter a valid email'),
+  check('password')
+      .exists({checkFalsy: true})
+      .withMessage('The necros do not approve of this password')
+];
 
 router.post('/login', csrfProtection, loginValidators, asyncHandler(async(req, res) => {
   const { email, password } = req.body
@@ -50,7 +143,7 @@ if (validatorErrors.isEmpty()) {
   errors = validatorErrors.array().map((error) => error.msg);    //only the validatorErrors
   console.log(errors)
   res.render('login-form', {
-    title: 'Login',  
+    title: 'Login',
     errors,
     csrfToken: req.csrfToken(),
     email
@@ -58,5 +151,15 @@ if (validatorErrors.isEmpty()) {
   })
 }
 }));
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

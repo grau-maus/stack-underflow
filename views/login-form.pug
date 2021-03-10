@@ -1,13 +1,13 @@
 extends layout
 block content
+    +validationErrorSummary(errors)
     form(action='/login', method='post')
         input(type= 'hidden', name='_csrf', value=csrfToken)
-        +field('Email Address','email', email, 'email')
-        +field('Password', 'password', null, 'password')
+        +field('Email Address','email', email, user.email)
+        +field('Password', 'password', null, user.password)
         div(class= 'login-register-buttons')
             button(type='submit', class= 'login-register') Login
             button(type= 'submit', class= 'login-register-demo') Demo User Login
-            button(type= 'submit', class= 'login-register-cancel') Cancel
-            
+
     div
         p: a(href="/signup") Don't have an account? Sign up

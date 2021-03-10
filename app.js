@@ -9,13 +9,24 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { sessionSecret } = require('./config');
-const questionsRouter = require('./routes/questions');
+//const questionsRouter = require('./routes/questions');
 
 
 const app = express();
 
 const {restoreUser} = require('./auth')
+// set up session middleware
+const store = new SequelizeStore({ db: sequelize });
 
+app.use(
+  session({
+    //name: 'stack_underflow_app.sid',
+    secret: sessionSecret,
+    store,
+    saveUninitialized: false,
+    resave: false,
+  })
+);
 // view engine setup
 app.set('view engine', 'pug');
 
@@ -29,18 +40,7 @@ app.use(indexRouter);    // any req to '/' we'll nav to indexRouter. we're being
 app.use(usersRouter);
 //app.use(questionsRouter);
 
-// set up session middleware
-const store = new SequelizeStore({ db: sequelize });
 
-app.use(
-  session({
-    //name: 'stack_underflow_app.sid',
-    secret: sessionSecret,
-    store,
-    saveUninitialized: false,
-    resave: false,
-  })
-);
 
 // create Session table if it doesn't already exist
 store.sync();
