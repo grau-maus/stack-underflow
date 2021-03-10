@@ -2,11 +2,11 @@
 extends layout
 
 block content
-  div(class='left-side-bar')
-    a(href='/')
-      div Homepage
-    a(href='http://github.com')
-      div Find the underverse
+  //- div(class='left-side-bar')
+  //-   a(href='/')
+  //-     div Homepage
+  //-   a(href='http://github.com')
+  //-     div Find the underverse
   for question in questions
     a(href=`/questions/${question.id}`)
       div(class='container')
