@@ -14,19 +14,12 @@ const { sessionSecret } = require('./config');
 
 const app = express();
 
+
 const {restoreUser} = require('./auth')
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
 
-app.use(
-  session({
-    //name: 'stack_underflow_app.sid',
-    secret: sessionSecret,
-    store,
-    saveUninitialized: false,
-    resave: false,
-  })
-);
+
 // view engine setup
 app.set('view engine', 'pug');
 
@@ -35,18 +28,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(
+  session({
+    secret: sessionSecret,
+    store,
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
 app.use(restoreUser);
 app.use(indexRouter);    // any req to '/' we'll nav to indexRouter. we're being explicit.
 app.use(usersRouter);
-//app.use(questionsRouter);
-
-
-
+app.use(questionsRouter);
 // create Session table if it doesn't already exist
 store.sync();
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

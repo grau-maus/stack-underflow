@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt');
 //const user = require('../db/models/user');
 
 //SIGN UP FORM
-
 router.get('/signup', csrfProtection, (req, res) => {
   const {
     username,
@@ -97,9 +96,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async(req, r
   }
 }))
 
-
 //LOG IN ROUTES
-
 router.get('/login-form', csrfProtection, asyncHandler(async(req, res) => {
   res.render('login-form', {
       title: 'Login',
@@ -151,15 +148,6 @@ if (validatorErrors.isEmpty()) {
   })
 }
 }));
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;
