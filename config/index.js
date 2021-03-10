@@ -1,4 +1,4 @@
-require('dotenv').config(); // <=== added because typing 'dotenv' with sequelize commands is a hassle
+// require('dotenv').config(); // <=== added because typing 'dotenv' with sequelize commands is a hassle
 
 module.exports = {
   environment: process.env.NODE_ENV || 'development',
