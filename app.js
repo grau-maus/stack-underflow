@@ -9,11 +9,16 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { sessionSecret } = require('./config');
-const questionsRouter = require('./routes/questions');
+//const questionsRouter = require('./routes/questions');
+
 
 const app = express();
 
-const { restoreUser } = require('./auth')
+
+const {restoreUser} = require('./auth')
+// set up session middleware
+const store = new SequelizeStore({ db: sequelize });
+
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -24,20 +29,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(sessionSecret));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// set up session middleware
-const store = new SequelizeStore({ db: sequelize });
-
 app.use(
   session({
-    // name: 'stack_underflow_app.sid',
     secret: sessionSecret,
     store,
     saveUninitialized: false,
     resave: false,
   })
 );
-app.use(restoreUser);
 
+app.use(restoreUser);
 app.use(indexRouter);    // any req to '/' we'll nav to indexRouter. we're being explicit.
 app.use(usersRouter);
 app.use(questionsRouter);
