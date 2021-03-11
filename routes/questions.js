@@ -106,14 +106,10 @@ router.get('/questions/form', csrfProtection, asyncHandler(async (req, res) => {
 const questionValidators = [
     check('questionTitle')
         .exists({ checkFalsy: true })
-        .withMessage("Please provide a question")
-        .isLength({ min: 15, max: 255 })
-        .withMessage("Question title needs to be between 15 - 255 characters."),
+        .withMessage("Please provide a question"),
     check('content')
         .exists({ checkFalsy: true })
         .withMessage("Content is missing")
-        .isLength({ min: 50 })
-        .withMessage("Question content must be at least 50 characters.")
 ]
 
 router.post('/questions/form', csrfProtection, questionValidators, asyncHandler(async (req, res) => {
@@ -123,19 +119,20 @@ router.post('/questions/form', csrfProtection, questionValidators, asyncHandler(
     } = req.body
 
     const newQuestion = Question.build({
-        questionTitle,
+        userId: req.session.auth.userId,
+        title: questionTitle,
         content,
     });
 
-    const validatorErrors = questionValidators(req)
+    const validatorErrors = validationResult(req)
 
     if (validatorErrors.isEmpty()) {
         await newQuestion.save();
-        res.redirect('/questions/:id')    //we will have this :id from the build & save
+        res.redirect(`/questions/${newQuestion.id}`)    //we will have this :id from the build & save
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
 
-        res.render('/questions-ask-form', {
+        res.render('questions-ask-form', {
             questionTitle,
             content,
             errors,
