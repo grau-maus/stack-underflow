@@ -13,6 +13,7 @@ block display
         input(type='password', name='password', placeholder='password')
         div(class='login-register-buttons')
             button(type='submit', class='login') Login
+            
     form(action='/demo', class='demo-button', method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
         button(type='submit', class= 'login-register-demo') Demo User Login
