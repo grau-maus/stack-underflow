@@ -49,6 +49,10 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
         include: [User, Answer, Vote]
     });
 
+    const allQuestions = await Question.findAll({
+        include: [User]
+    });
+
     // initializes 'isLoggedIn' with a boolean depending
     // on the state of 'req.session.auth'
     const isLoggedIn = Boolean(req.session.auth);
@@ -57,6 +61,7 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
         title: question.title,
         question,
         isLoggedIn,
+        allQuestions,
         csrfToken: req.csrfToken()
     });
 }));
