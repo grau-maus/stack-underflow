@@ -1,4 +1,7 @@
+//- ./views/index.pug
+
 extends layout
+include utils.pug
 
 append head
   //- add page specific styles by appending to the head
@@ -9,10 +12,27 @@ append head
 block content
   h1= title
   p Welcome to Stack Underflow 
-  div(class='left-side-bar')
+  div(class='navbar-container')
+    a(class='navbar-logo' src='/images/logo.png')
+    
+    div(class='searchbar-container')
+      input(class='search-bar', type='text', placeholder='🔍')
+      button(class='search-button', type='button') Search
+    
+    div(class= 'login-register-buttons')
+      a(href='/login-form' class='login-signup-btn') 
+        button(type='submit' class='login-button') Login
+    
+    div(class= 'login-register-buttons')
+      a(href='/signup' class='login-signup-btn') 
+        button(type='submit' class='signup-button') Signup
+    
+    div(class='left-side-bar')
     a(href='/')
       div Homepage
     a(href='http://github.com')
       div Find the underverse
+
+
 
   block display 
