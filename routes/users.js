@@ -53,7 +53,7 @@ const userValidators = [
     .isLength({ max: 50 })
     .withMessage("We said a password... not a novel.")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')  //why is this 'g' here?
-    .withMessage("Password must contain at least 3 numbers, one letter 'A' and one special character"),
+    .withMessage("Password must contain at least 1 number, 1 uppercase letter, 1 lowercase letter, and 1 special character. No '_', '-', or '.'!"),
   check('confirm-password')
     .exists({ checkFalsy: true })
     .withMessage("Type it again, I dare you...")
@@ -79,7 +79,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     email
   });
 
-  const validatorErrors = validationResult(req)
+  const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -130,7 +130,8 @@ router.post('/login', csrfProtection, loginValidators,
     const {
       email,
       password
-    } = req.body
+    } = req.body;
+
     // we need validation errors to check validation results(req)
     let errors = [];
     const validatorErrors = validationResult(req);          // array that we'll handle each of them on  line 53
@@ -172,8 +173,24 @@ router.post('/login', csrfProtection, loginValidators,
 router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
   const user = await User.findOne({ where: { email: 'test@test.com' } });
 
-  loginUser(req, res, user);
-  res.redirect('/')
+  // in the event that the dev maintainers of this code
+  // don't want to drop their databases and the demo
+  // user is nonexistent :)
+  if (!user) {
+    const buildDemoUser = await User.build({
+      username: 'test',
+      email: 'test@test.com',
+      hashedPassword: bcrypt.hashSync('Test123!', 10)
+    });
+
+    await buildDemoUser.save();
+
+    loginUser(req, res, buildDemoUser);
+  } else {
+    loginUser(req, res, user);
+  }
+
+  res.redirect('/');
 }));
 
 module.exports = router;

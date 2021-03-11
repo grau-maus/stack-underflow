@@ -17,7 +17,7 @@ block display
             input(type='hidden', name='_csrf', value=csrfToken)
             if(isLoggedIn)
                label(for='answerContent') Add Answer:
-               textarea(name='answerContent', value=question.content)
+               textarea(name='answerContent', value=answerContent)
                button(type='submit') Post Answer
       div(class='question-body-answers')
          p Answers:

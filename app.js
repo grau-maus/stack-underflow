@@ -15,7 +15,7 @@ const questionsRouter = require('./routes/questions');
 const app = express();
 
 
-const {restoreUser} = require('./auth')
+const { restoreUser } = require('./auth')
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
 
