@@ -1,5 +1,5 @@
-extends layout
-block content
+extends index
+block display
     div(class='header') Header
         h2 Stack Underflow
         input(type="text", placeholder="Search")
@@ -20,8 +20,9 @@ block content
             h4 Ask the Underflow!
         div
             h3 WARNING: Your question may cause you to be sucked under the flow
-        form.pure-form(action="/questions/review", method="post", class="question-form-container")
+        form.pure-form(action="/questions/form", method="post", class="question-form-container")
             fieldset
+                input(type="hidden" name="_csrf" value=csrfToken)
                 div(class="question-form-title")
                     h2 Title
                     h3 Be specfic and imagine you are asking a question to another person
@@ -33,4 +34,7 @@ block content
                     textarea(name="content", type=text, placeholder="Ask your question here")
                 p
                 div
-                    button(class="submit-question-button", type="submit") Submit/Review
+                    button(class="submit-question-button", type="submit") Review
+                if(errors)
+                    each error in errors
+                        h5= error
