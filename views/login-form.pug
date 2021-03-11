@@ -1,9 +1,8 @@
-//- ./views/login-form.pug
-
 extends index
 include utils.pug
 
 block display
+
     +validationErrorSummary(errors)
     form(action='/login', class='login-form', method='post')
         //- fieldset 

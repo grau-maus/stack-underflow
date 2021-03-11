@@ -1,7 +1,9 @@
 //- if they arent authenticated user then we'll render page w/o voting or answering, otherwise everything
-extends layout
+
+extends index
 //- include utils.pug
-block content
+
+block display
    //- +validationErrorSummary(errors)
    div(class='question-header') HEADER
     h2(class='question-header-title'): em for #{title}

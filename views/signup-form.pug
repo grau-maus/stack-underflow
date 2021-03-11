@@ -4,6 +4,7 @@ extends index
 include utils.pug
 
 block display
+
     +validationErrorSummary(errors)
     form(action='/signup', class='signup-form', method='post')
         legend Signup
