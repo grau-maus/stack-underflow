@@ -6,7 +6,14 @@ module.exports = {
       {
         userId: 3,
         questionId: 1,
-        answerId: 1,
+        answerId: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 2,
+        questionId: 1,
+        answerId: null,
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -14,6 +21,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Votes', null, {});
+    return queryInterface.bulkDelete('Votes', null, {
+      truncate: true
+    });
   }
 };

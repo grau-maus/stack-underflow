@@ -14,12 +14,10 @@ module.exports = {
         references: { model: 'Users' }
       },
       questionId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Questions' }
       },
       answerId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Answers' }
       },
