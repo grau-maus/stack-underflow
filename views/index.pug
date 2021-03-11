@@ -9,10 +9,20 @@ append head
 block content
   h1= title
   p Welcome to Stack Underflow 
+  div(class='navbar-container')
+    a(class='navbar-logo' src='/images/logo.png')
+    input(class='search-bar', type='text', placeholder='🔍')
+      button(class='search-button', type='button') Search
+    div(class= 'login-register-buttons')
+      button(type='submit', class='login') Login
+    div(class= 'login-register-buttons')
+      button(type='submit', class='signup') Signup
   div(class='left-side-bar')
     a(href='/')
       div Homepage
     a(href='http://github.com')
       div Find the underverse
+
+
 
   block display 
