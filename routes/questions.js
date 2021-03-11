@@ -2,8 +2,9 @@
 
 const express = require('express');
 const { check, validationResult } = require('express-validator');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const db = require('../db/models');
-const question = require('../db/models/question');
 const { Question, Answer, User, Vote } = db;
 const { csrfProtection, asyncHandler } = require('./utils');
 
@@ -13,7 +14,24 @@ const router = express.Router();
 router.get('/questions', csrfProtection, asyncHandler(async (req, res) => {
     const questions = await Question.findAll({
         include: [User, Answer, Vote]
+    });
 
+    res.render('questions', {
+        title: 'Questions',
+        questions,
+        csrfToken: req.csrfToken()
+    });
+}));
+
+// ROUTE FOR SEARCHING SPECIFC KEYWORDS
+router.post('/questions', csrfProtection, asyncHandler(async (req, res) => {
+    const { query } = req.body;
+    const questions = await Question.findAll({
+        where: {
+            title: {
+                [Op.iLike]: `%${query}%`   // 'Op' NEEDS TO BE IMPORTED IN ORDER FOR THIS QUERY TO WORK
+            }                               // see above at imports
+        }
     });
 
     res.render('questions', {
@@ -31,12 +49,14 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
         include: [User, Answer, Vote]
     });
 
-    // get user id from session request
-    const userId = req.session.auth.userId;
+    // initializes 'isLoggedIn' with a boolean depending
+    // on the state of 'req.session.auth'
+    const isLoggedIn = Boolean(req.session.auth);
 
     res.render('questions-single', {
         title: question.title,
         question,
+        isLoggedIn,
         csrfToken: req.csrfToken()
     });
 }));
@@ -67,25 +87,20 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
     res.redirect(`/questions/${questionId}`)
 }));
 
-router.post('/questions/:id', csrfProtection, asyncHandler(async (req, res) => {
-
-    //await newQuestion.save();
-    const question = await Question.findByPk()
-
-    const {
-        questionId,
-        questionTitle,
-        content,
-    } = req.body
-    res.redirect(`/questions/${newQuestion.id}`)
-}))
-
 router.get('/questions/form', csrfProtection, asyncHandler(async (req, res) => {
-    const question = db.Question.build();
-    res.render('questions-ask-form', {
-        csrfToken: req.csrfToken()
-    })
+    // console.log();
+    // console.log('SESSION INFO:::::', req.session.auth);
+    // console.log();
 
+    if (!req.session.auth) {
+        // redirects user to login page if not logged in
+        res.redirect('/login');
+
+    } else {
+        res.render('questions-ask-form', {
+            csrfToken: req.csrfToken()
+        });
+    }
 }));
 
 const questionValidators = [

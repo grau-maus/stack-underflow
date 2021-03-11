@@ -11,26 +11,28 @@ append head
 
 block content
   h1= title
-  p Welcome to Stack Underflow 
+  p Welcome to Stack Underflow
   div(class='navbar-container')
-    a(class='navbar-logo' src='/images/logo.png')
-    
+    a(class='navbar-logo', src='/images/logo.png')
+
     div(class='searchbar-container')
-      input(class='search-bar', type='text', placeholder='🔍')
-      button(class='search-button', type='button') Search
-    
+      form(action='/questions', method='post')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        input(class='search-bar', type='text', name='query', placeholder='🔍')
+        button(type='submit', class='search-button') Search
+
     div(class= 'login-register-buttons')
-      a(href='/login-form' class='login-signup-btn') 
+      a(href='/login' class='login-signup-btn')
         button(type='submit' class='login-button') Login
-    
+
     div(class= 'login-register-buttons')
-      a(href='/signup' class='login-signup-btn') 
+      a(href='/signup' class='login-signup-btn')
         button(type='submit' class='signup-button') Signup
-    
+
     div(class='left-side-bar')
     a(href='/')
       div Homepage
     a(href='http://github.com')
       div Find the underverse
 
-  block display 
+  block display

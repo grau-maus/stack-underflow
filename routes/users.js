@@ -5,10 +5,10 @@ const router = express.Router()
 const { asyncHandler, csrfProtection, csrf } = require('./utils')
 const { check, validationResult } = require('express-validator'); // a method we get for free when we use express-valid.  w/ever is in the req, that that is valid info. and if invalid, errors will be pushed into the validations erros arraydo i need validation res
 const app = require('../app');
-const db = require('../db/models')
+const db = require('../db/models');
+const { User, Vote, Answer, Question } = db;
 const { loginUser } = require('../auth')
 const bcrypt = require('bcrypt');
-//const user = require('../db/models/user');
 
 //SIGN UP FORM
 router.get('/signup', csrfProtection, (req, res) => {
@@ -18,7 +18,7 @@ router.get('/signup', csrfProtection, (req, res) => {
     password,
   } = req.body;
 
-  const user = db.User.build();
+  const user = User.build();
   res.render('signup-form', {
     title: 'Sign up',
     email,
@@ -40,7 +40,7 @@ const userValidators = [
     .isEmail()
     .withMessage("Email address is not valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { email: value } })
+      return User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
             return Promise.reject("The provided email address is already in use by another account")
@@ -74,7 +74,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     password,
   } = req.body;
 
-  const user = db.User.build({
+  const user = User.build({
     username,
     email
   });
@@ -113,7 +113,7 @@ const loginValidators = [
     .isEmail()
     .withMessage("Email address is not valid email")
     .custom((value) => {
-      return db.User.findOne({ where: { email: value } })
+      return User.findOne({ where: { email: value } })
         .then((user) => {
           if (!user) {
             return Promise.reject("This email does not exist in the Underflow! Sigh!")
@@ -138,7 +138,7 @@ router.post('/login', csrfProtection, loginValidators,
     //console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
-      const user = await db.User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email } });
 
       if (user !== null) {    // if the user exists in our db
         const isValid = await bcrypt.compare(               // comparing what the person inputed w/the hashedP
@@ -164,9 +164,16 @@ router.post('/login', csrfProtection, loginValidators,
       email,
       errors,
       csrfToken: req.csrfToken(),
-
     });
-  }));
+  })
+);
 
+// DEMO USER LOGIN
+router.post('/demo', csrfProtection, asyncHandler(async (req, res) => {
+  const user = await User.findOne({ where: { email: 'test@test.com' } });
+
+  loginUser(req, res, user);
+  res.redirect('/')
+}));
 
 module.exports = router;
