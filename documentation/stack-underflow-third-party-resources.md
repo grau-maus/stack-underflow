@@ -5,4 +5,4 @@ uuidgenerator.net
 dbdiagram.io/d
 
 <!-- color palette generator -->
-https://coolors.co/eff1f3-f95738-323535-1182d7-fed766
+https://coolors.co/eff1f3-f95738-293646-2e363e-323535-1182d7
