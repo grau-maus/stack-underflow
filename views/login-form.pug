@@ -1,3 +1,5 @@
+//- ./views/login-form.pug
+
 extends index
 include utils.pug
 
@@ -12,7 +14,7 @@ block display
         input(type='password', name='password', placeholder='password')
         div(class='login-register-buttons')
             button(type='submit', class='login') Login
-            button(type='submit', class= 'login-register-demo') Demo User Login
+            //- button(type='submit', class= 'login-register-demo') Demo User Login
 
     div
         p: a(href="/signup") Not in the Underflow? Sign up
