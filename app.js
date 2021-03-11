@@ -9,7 +9,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const { sessionSecret } = require('./config');
-//const questionsRouter = require('./routes/questions');
+const questionsRouter = require('./routes/questions');
 
 
 const app = express();
