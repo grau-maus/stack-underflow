@@ -62,9 +62,9 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
 }));
 
 const answerValidator = [
-    check('content')
+    check('answerContent')
         .exists({ checkFalsy: true })
-        .withMessage("Body is missing")
+        .withMessage('I think you forgot to type in an answer ;)')
 ];
 
 // ROUTE FOR CREATING AN ANSWER FOR THE CURRENT QUESTION
@@ -78,13 +78,34 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
         content: answerContent,
         userId: req.session.auth.userId,
         questionId,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date(),                  // <=== 'createdAt' & 'updatedAt' are unnecessary
+        updatedAt: new Date()                   // <=== sequelize already takes care of them
     });
 
-    await newAnswer.save();
+    const validatorErrors = validationResult(req);
 
-    res.redirect(`/questions/${questionId}`)
+    if (validatorErrors.isEmpty()) {
+        await newAnswer.save();
+
+        res.redirect(`/questions/${questionId}`);
+    } else {
+        const errors = validatorErrors.array().map((error) => error.msg);
+        const question = await Question.findByPk(questionId, {
+            include: [User, Answer, Vote]
+        });
+
+        // initializes 'isLoggedIn' with a boolean depending
+        // on the state of 'req.session.auth'
+        const isLoggedIn = Boolean(req.session.auth);
+
+        res.render('questions-single', {
+            title: question.title,
+            question,
+            errors,
+            isLoggedIn,
+            csrfToken: req.csrfToken()
+        });
+    }
 }));
 
 router.get('/questions/form', csrfProtection, asyncHandler(async (req, res) => {
@@ -124,7 +145,7 @@ router.post('/questions/form', csrfProtection, questionValidators, asyncHandler(
         content,
     });
 
-    const validatorErrors = validationResult(req)
+    const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
         await newQuestion.save();
