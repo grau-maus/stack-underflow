@@ -7,15 +7,64 @@ module.exports = {
 
     return queryInterface.bulkInsert('Questions', [
       {
-        title: 'TEST QUESTION',
-        content: 'THIS IS A TEST QUESTION 1',
-        userId: 2,
-        createdAt: new Date(),
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
+        updatedAt: new Date()
+      },
+      {
+        title: faker.lorem.sentence(),
+        content: faker.lorem.sentences(),
+        userId: Math.floor(Math.random() * (10 - 1) + 1),      // <==== random values, 1-9. corresponds to the amount of users
+        createdAt: new Date(),                                  // not including the 'test' user
         updatedAt: new Date()
       },
       {
         title: 'WHAT ARE magnets',
-        content: 'THIS IS A TEST QUESTION 2',
+        content: 'THIS IS A TEST QUESTION 2 GOSH DARN IT',
         userId: 3,
         createdAt: new Date(),
         updatedAt: new Date()

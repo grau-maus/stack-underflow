@@ -9,18 +9,22 @@ block display
       div(class='question-body-content')
          form(action=`/questions/${question.id}/downvote`, method='post')
             input(type='hidden', name='_csrf', value=csrfToken)
-            button(type='submit', class='question-body-content-downvote', id='downvote') DOWNVOTE
+            if(isLoggedIn)
+               button(type='submit', class='question-body-content-downvote', id='downvote') DOWNVOTE
          div: p #{question.content}
       div(class='question-body-answer-form')
          form(action=`/questions/${question.id}/answers`, method=`post`)
             input(type='hidden', name='_csrf', value=csrfToken)
-            label(for='answerContent') Add Answer:
-            textarea(name='answerContent', value=question.content)
-            button(type='submit') Post Answer
+            if(isLoggedIn)
+               label(for='answerContent') Add Answer:
+               textarea(name='answerContent', value=question.content)
+               button(type='submit') Post Answer
       div(class='question-body-answers')
-         for answer in question.Answers
-            div
-               form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
-                  input(type='hidden', name='_csrf', value=csrfToken)
-                  button(type='submit', class='question-body-answers-content', id='upvote') UPVOTE
-               p #{answer.content}
+         p Answers:
+            for answer in question.Answers
+               div
+                  form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
+                     input(type='hidden', name='_csrf', value=csrfToken)
+                     if(isLoggedIn)
+                        button(type='submit', class='question-body-answers-content', id='upvote') UPVOTE
+                  p #{answer.content}
