@@ -1,8 +1,7 @@
-body {
-    background-color:black;
+/* body {
     display: flex;
     flex-direction: column;
-}
+} */
 p {
     color: white
 }
