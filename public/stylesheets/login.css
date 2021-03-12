@@ -6,7 +6,7 @@
 
 body > div.login-form-content {
     display: flex;
-    max-width: 500 px;
+    max-width: 500px;
     color:  #eff1f3;
     font-family: Verdana,
     Geneva,
@@ -20,8 +20,8 @@ button.login {
     display: flex;
     background-color: #1182d7;
     color: #eff1f3;
-    margin-left: 475px;
-    margin-top: 18px;
+/*     margin-left: 475px; */
+/*     margin-top: 18px; */
 }
 
 div.email-input-div {
@@ -165,4 +165,3 @@ div.login-signup-link > p > a:hover {
 } */
 
 /* PLEASE DO NOT TOUCH RULES ABOVE -------------------------------------------------------------------- */
-
