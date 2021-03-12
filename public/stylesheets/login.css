@@ -3,6 +3,7 @@
 
 } */
 
+
 body > div.login-form-content {
     display: flex;
     max-width: 500 px;
@@ -15,9 +16,9 @@ body > div.login-form-content {
     border-radius: 6 px;
 }
 
+
 button.login {
     display: flex;
-    justify-content: center;
     background-color: #1182d7;
     color: #eff1f3;
     margin-left: 475px;
@@ -42,13 +43,16 @@ div.passwd-input-div {
     sans-serif;
 }
 
-div.demo-login {
+
+div.demo-login{
     display: flex;
     justify-content: center;
     color: #eff1f3;
 }
 
+
 button.login-register-demo {
+
     background-color: #f95738;
     color: #eff1f3;
 
@@ -56,7 +60,6 @@ button.login-register-demo {
 
 div.signup-div {
     display: flex;
-    justify-content : center;
+    justify-content: center;
     color: #eff1f3;
 }
-
