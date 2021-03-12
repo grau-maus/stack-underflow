@@ -6,8 +6,18 @@ h2 {
     color:whitesmoke;
     font-size: 12px;
 }
+
+/* the right side bar and the question answers body */
+
 .full-container {
     /* background-color: yellow; */
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: space-between;
+
     display: flex;
     flex-direction: row;
 }
@@ -26,7 +36,10 @@ h2 {
 }
 
 /* this is the question body CONTAINER */
-
+.title {
+    /* margin-top: 30px; */
+    color: white;
+}
 .asked {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -64,14 +77,17 @@ h2 {
     justify-content: center;
 }
 .question-body-content div p {
-    color: wheat;
+    color: white;
     font-weight: bold;
-    width: 500px;
+    /* width: 500px; */
     padding-left: 15px;
 }
+
+
 .question-body-answer-form form {
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
 }
 
 .question-body-answer-form label {
@@ -94,6 +110,10 @@ h2 {
     width: 100px;
     order: 3;
 }
+.question-body-content-downvote {
+    font-size: 25px;
+    color: white;
+}
 
 /* grandparent */
  .question-body-answers {
@@ -112,9 +132,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
 }
-/* .question-body-answers button{
 
-} */
 .each-answer {
     align-self: flex-start;
     display: flex;
@@ -150,12 +168,12 @@ h2 {
 .question-body-content div {
     order: 2;
 }
-/* .question-body-content-downvote {
+/* .question-body-content button {
     order:
 } */
 
 .question-body-answers {
-
+    margin: 20px;
     padding-bottom: 10px;
     order: 4;
     justify-content: center;
@@ -166,13 +184,20 @@ h2 {
     padding: 15px;
 }
 
-/* .question-body-answers-content  {
-    padding-top: 10px;
-} */
-
-button {
-    background-color: orange;
-    /* height: 50px;
-    width: 40px; */
-    color:white;
+.question-body-answers-content  {
+    font-size: 25px;
 }
+.question-body-answers button {
+    background-color: orange;
+    border-radius: 15px;
+    height: 80px;
+    color: white;
+}
+
+/* button {
+    background-color: orange; */
+    /* height: 50px;
+    width: 40px;
+    color:white;
+    border-radius: 15px;
+} */
