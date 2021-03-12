@@ -3,19 +3,23 @@
 
 } */
 
-body>div.login-form-content {
+
+body > div.login-form-content {
     display: flex;
-    max-width : 500px;
-    color: #eff1f3;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 500 px;
+    color:  #eff1f3;
+    font-family: Verdana,
+    Geneva,
+    Tahoma,
+    sans-serif;
     font-weight: 100;
-    border-radius: 6px;
-}  
+    border-radius: 6 px;
+}
+
 
 button.login {
     display: flex;
-    justify-content: center;
-    background-color : #1182d7;
+    background-color: #1182d7;
     color: #eff1f3;
     margin-left: 475px;
     margin-top: 18px;
@@ -32,10 +36,13 @@ div.passwd-input-div {
 
 #login-box {
     display: flex;
-    justify-content: center;
+    justify-content : center;
     color: #eff1f3;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family : Arial,
+    Helvetica,
+    sans-serif;
 }
+
 
 div.demo-login{
     display: flex;
@@ -43,7 +50,9 @@ div.demo-login{
     color: #eff1f3;
 }
 
-button.login-register-demo{
+
+button.login-register-demo {
+
     background-color: #f95738;
     color: #eff1f3;
 
