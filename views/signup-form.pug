@@ -4,17 +4,45 @@ extends index
 include utils.pug
 
 block display
-    +validationErrorSummary(errors)
-    form(action='/signup', class='signup-form', method='post')
-        legend Signup
-        input(type='hidden' name='_csrf' value=csrfToken)
-        input(type= 'text', name='username', placeholder='display name')
-        input(type= 'text', name='email', placeholder='email')
-        input(type= 'password', name='password', placeholder='password')
-        input(type= 'password', name='confirm-password', placeholder='confirm password')
-        div(class= 'login-register-buttons')
-            button(type='submit', class= 'signup') Signup
-    div
-        p: a(href="/login") Have an account and missed ALL the login links? LOGIN
+    div(id='signup-box' class='signup-form')
+        +validationErrorSummary(errors)
+        form(action='/signup', class='signup-containter', method='post')
+            
+            div(id='display-name' class='signup-inputs')
+                legend Display Name
+                input(type= 'text', name='username',        placeholder='display name')
+
+            div(id='signup-email' class='signup-inputs')
+                legend Email
+                input(type= 'text', name='email',           placeholder='email')
+
+            div(id='signup-password' class='signup-inputs')
+                legend Password
+                input(type= 'password', name='password',  placeholder='password')
+
+            div(id='signup-usempapa' class='signup-inputs')
+                legend Confirm Password
+                input(type= 'password' name='confirm-password', placeholder='confirm password')
+
+            div(class= 'signup-btn-div')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                button(type='submit', class= 'signup-btn-form') Signup
+    
+    div(class='login-msg')
+        p Have an account and missed ALL the login links?
+    div(class='login-div')
+        p: a(href="/login") LOGIN
+
+    div(class='snark-box')
+        div(class='snark-div')
+            h1 Reasons to join the Underflow
+                h4  
+                ul 
+                    li Get stuck? Snark a question.
+                    li Know a thing? Snipe an answer.
+                    li Be an UberCoder 
+                    li Unlock new privileges.
+                    li Had a rough day and just want to laugh? Join the Underflow and let us take away your troubles.
+
 
     footer

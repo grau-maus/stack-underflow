@@ -7,26 +7,79 @@ block display
     div(id='login-box' class='login-inputs')
         +validationErrorSummary(errors)
         form(action='/login', class='inputs-container', method='post')
-            input(type='hidden' name='_csrf' value=csrfToken)
 
             div(class='email-input-div')
                 legend  Email
-                input(class='inputs' type='text',  name='email',    placeholder='email')
+                input(class='inputs' type='text', name='email',   placeholder='email')
 
             div(class='passwd-input-div')
                 legend  Password
-                input(class='inputs' type='password', name='password',   placeholder='password')
+                input(class='inputs' type='password' name='password',  placeholder='password')
 
             div(class='login-btn-div')
-            button(type='submit',   class='login') Login      
-    
-            div(class='demo-login')
-                form(action='/demo', class='demo-button', method='post')
-                    input(type='hidden' name='_csrf' value=csrfToken)
-                    button(type='submit', class= 'login-register-demo') Demo Login
+                input(type='hidden' name='_csrf' value=csrfToken)
+                button(type='submit',  class='login') Login      
+
+        div(class='demo-login')
+        form(action='/demo', class='demo-button', method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            button(type='submit', class= 'login-register-demo') Demo Login
+
+        div(class='signup-msg')
+            p Not in the Underflow?
 
         div(class='signup-div')
-            p: a(href="/signup") Not in the Underflow? Sign up
+            p: a(href="/signup") Sign up
 
-    footer 
-//- 
+    footer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- //- PLEASE DO NOT TOUCH CODE BELOW ------------------------------------------------------------
+
+//- extends index
+//- include utils.pug
+
+//- block display
+//-     div(class='login-form-container')
+//-         +validationErrorSummary(errors)
+//-         form(action='/login', class='login-form', method='post')
+//-             legend Log In
+//-             input(type='hidden' name='_csrf' value=csrfToken)
+//-             input(type='text', name='email', placeholder='email')
+//-             input(type='password', name='password',         placeholder='password')
+//-             div(class='login-register-buttons')
+//-                 button(type='submit', class='login') Login
+//-         form(action='/demo', class='demo-button', method='post')
+//-             input(type='hidden' name='_csrf' value=csrfToken)
+//-             button(type='submit', class= 'login-register-demo') Demo User Login
+
+//-         div(class='login-signup-link')
+//-             p: a(href="/signup") Not in the Underflow? Sign up
+
+//-     footer
+
+//- //- PLEASE DO NOT TOUCH CODE ABOVE ------------------------------------------------------------
