@@ -1,7 +1,7 @@
-body#body {
+body {
   display: grid;
-  grid-template-columns: [col-left] 25% [col-mid] 37.5% [col-right] 37.5%;
-  grid-template-rows: [row-top] 10% [row-mid] 85% [row-bottom] 5%;
+  grid-template-columns: 181px 1.6fr 1fr;
+  grid-template-rows: 121px 2fr 0.42fr;
   justify-items: stretch;
 }
 
