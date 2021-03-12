@@ -1,0 +1,62 @@
+/* body {
+    background-color: #1c1d3b;
+
+} */
+
+body > div.login-form-content {
+    display: flex;
+    max-width: 500 px;
+    color:  #eff1f3;
+    font-family: Verdana,
+    Geneva,
+    Tahoma,
+    sans-serif;
+    font-weight: 100;
+    border-radius: 6 px;
+}
+
+button.login {
+    display: flex;
+    justify-content: center;
+    background-color: #1182d7;
+    color: #eff1f3;
+    margin-left: 475px;
+    margin-top: 18px;
+}
+
+div.email-input-div {
+    padding: 6px;
+}
+
+div.passwd-input-div {
+    padding: 6px;
+}
+
+
+#login-box {
+    display: flex;
+    justify-content : center;
+    color: #eff1f3;
+    font-family : Arial,
+    Helvetica,
+    sans-serif;
+}
+
+div.demo-login {
+    display: flex;
+    justify-content: center;
+    color: #eff1f3;
+}
+
+button.login-register-demo {
+    background-color: #f95738;
+    color: #eff1f3;
+
+}
+
+div.signup-div {
+    display: flex;
+    justify-content : center;
+    color: #eff1f3;
+}
+
