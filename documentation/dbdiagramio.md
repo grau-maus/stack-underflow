@@ -12,6 +12,7 @@ Table users {
 
 Table questions {
   id int [pk]
+  title string [not null]
   content text [not null]
   userId int [not null]
   created_at timestamp [not null]
@@ -30,8 +31,8 @@ Table answers {
 Table votes {
   id int [pk]
   userId int [not null]
-  questionId int [not null]
-  answerId int [not null]
+  questionId int
+  answerId int
 }
 
 // Creating references
