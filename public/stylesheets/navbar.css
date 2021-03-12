@@ -1,14 +1,14 @@
-body {
+/* body {
     width: 630px;
     margin: 0 auto;
-    background-color: #323535;
+    /* background-color: #323535; */
     font-family: 'Raleway', sans-serif;
 }
 
 .navbar-container {
     display: flex,
     width:
-    
+
 }
 .search-bar {
     &-bar
@@ -16,4 +16,4 @@ body {
 
     &input {
 
-}
+} */
