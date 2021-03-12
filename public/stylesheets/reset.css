@@ -1,6 +1,10 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  display: grid;
+  grid-template-columns: 25% 37.5% 37.5%;
+  grid-template-rows: 10% 85% 5%;
+  justify-items: stretch;
 }
 
 a {
@@ -15,7 +19,6 @@ h1, h2, h3, h4, h5, h6, a, ol, li, ul, div, span,
 body, header, nav {
   font-size: 1rem;
   color: inherit;
-background-color : #2e3646;
 
 
   margin: 0;
