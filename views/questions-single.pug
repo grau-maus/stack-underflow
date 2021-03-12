@@ -1,30 +1,47 @@
 extends index
-
 include utils.pug
-
+//- head
+//-    block head
+//-       link(rel="stylesheet", href="/stylesheets/view-specific-question.css")
+//-body
 block display
    +validationErrorSummary(errors)
-   div(class='question-body')
-      div Asked: #{question.updatedAt}
-      div(class='question-body-content')
-         form(action=`/questions/${question.id}/downvote`, method='post')
-            input(type='hidden', name='_csrf', value=csrfToken)
-            if(isLoggedIn)
-               button(type='submit', class='question-body-content-downvote', id='downvote') DOWNVOTE
-         div: p #{question.content}
-      div(class='question-body-answer-form')
-         form(action=`/questions/${question.id}/answers`, method=`post`)
-            input(type='hidden', name='_csrf', value=csrfToken)
-            if(isLoggedIn)
-               label(for='answerContent') Add Answer:
-               textarea(name='answerContent', value=answerContent)
-               button(type='submit') Post Answer
-      div(class='question-body-answers')
-         p Answers:
-            for answer in question.Answers
-               div
-                  form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
-                     input(type='hidden', name='_csrf', value=csrfToken)
-                     if(isLoggedIn)
-                        button(type='submit', class='question-body-answers-content', id='upvote') UPVOTE
-                  p #{answer.content}
+   //- div(class='left-side-bar')
+   //-  a(href='/')
+   //-    div Homepage
+   //-  a(href='http://github.com')
+   //-    div Find the underverse
+   div(class='full-container')
+      div(class='question-body-container')
+         div(class='asked')
+            h2 Asked: #{question.updatedAt}
+         div(class='question-body-content')
+            form(action=`/questions/${question.id}/downvote`, method='post')
+               input(type='hidden', name='_csrf', value=csrfToken)
+               if(isLoggedIn)
+                  button(type='submit', class='question-body-content-downvote', id='downvote') DOWNVOTE
+            div: p #{question.content}
+         div(class='question-body-answer-form')
+            form(action=`/questions/${question.id}/answers`, method=`post`)
+               input(type='hidden', name='_csrf', value=csrfToken)
+               if(isLoggedIn)
+                  label(for='answerContent') Add Answer:
+                  textarea(name='answerContent', value=question.content)
+                  button(type='submit') Post Answer
+         div(class='question-body-answers')
+            p Answers:
+               for answer in question.Answers
+                  div(class='each-answer')
+                     form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
+                        input(type='hidden', name='_csrf', value=csrfToken)
+                        if(isLoggedIn)
+                           button(type='submit', class='question-body-answers-content', id='upvote') UPVOTE
+                     div(class='answer'): p #{answer.content}
+      div(class='right-side-bar-container'): p Here are a bunch of questions!
+         ul
+            each question in allQuestions
+               a(href=`/questions/${question.id}`)
+                  div(class="listed-question-body")
+                     li #{question.title}
+                        div(class='question-body')
+                        div Asked: #{question.updatedAt}

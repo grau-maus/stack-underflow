@@ -6,6 +6,7 @@ include utils.pug
 block display
     +validationErrorSummary(errors)
     form(action='/signup', class='signup-form', method='post')
+    
         legend Signup
         input(type='hidden' name='_csrf' value=csrfToken)
         input(type= 'text', name='username', placeholder='display name')
