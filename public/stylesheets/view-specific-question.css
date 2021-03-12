@@ -1,10 +1,10 @@
 /* p {
     color: white;
 } */
-h2 {
+/* h2 {
     color:whitesmoke;
     font-size: 12px;
-}
+} */
 
 /* the right side bar and the question answers body */
 .full-container {
@@ -71,6 +71,7 @@ h2 {
 
 .asked h2 {
     padding-left: 25px;
+    color: white;
 }
 .question-body-content form {
     display: flex;
