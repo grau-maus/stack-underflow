@@ -20,8 +20,8 @@ button.login {
     display: flex;
     background-color: #1182d7;
     color: #eff1f3;
-/*     margin-left: 475px; */
-/*     margin-top: 18px; */
+    margin-left: 475px;
+    margin-top: 18px;
 }
 
 div.email-input-div {
