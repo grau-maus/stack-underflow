@@ -4,26 +4,27 @@ extends index
 include utils.pug
 
 block display
-        div(id='login-box' class='login-inputs')
-            +validationErrorSummary(errors)
-            form(action='/login', class='inputs-container', method='post')
-                input(type='hidden' name='_csrf' value=csrfToken)
+    div(id='login-box' class='login-inputs')
+        +validationErrorSummary(errors)
 
-                div(class='email-input-div')
-                    legend  Email
-                    input(class='inputs' type='text',  name='email',    placeholder='email')
+        form(action='/login', class='inputs-container', method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
 
-                div(class='passwd-input-div')
-                    legend  Password
-                    input(class='inputs' type='password',name='password',   placeholder='password')
+            div(class='email-input-div')
+                legend  Email
+                input(class='inputs' type='text', name='email',   placeholder='email')
+
+            div(class='passwd-input-div')
+                legend  Password
+                input(class='inputs' type='password' name='password',  placeholder='password')
 
             div(class='login-btn-div')
-            button(type='submit',   class='login') Login      
-    
+                button(type='submit',  class='login') Login      
+
             div(class='demo-login')
                 form(action='/demo', class='demo-button', method='post')
                     input(type='hidden' name='_csrf' value=csrfToken)
-                    button(type='submit', class= 'login-register-demo') Demo Login
+                    button(type='submit', class='login-register-demo') Demo Login
 
         div(class='signup-div')
             p: a(href="/signup") Not in the Underflow? Sign up
