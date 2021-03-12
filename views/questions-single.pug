@@ -30,13 +30,13 @@ block display
                   label(for='answerContent') Your Answer
                   textarea(name='answerContent', value=question.content)
                   button(type='submit') Post Your Answer
+         if(question.Answers.length > 1)
+            p(class='number-answers') #{question.Answers.length} Answers
+         else if(questions.Answers.length === 1)
+            p(class='number-answers') #{question.Answers.length} Answer
+         else
+            p(class='number-answers') There have been no answers submitted
          div(class='question-body-answers')
-            if(question.Answers.length > 1)
-               p #{question.Answers.length} Answers
-            else if(questions.Answers.length === 1)
-               p #{question.Answers.length} Answer
-            else
-               p There have been no answers submitted
             for answer in question.Answers
                div(class='each-answer')
                   form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
@@ -44,11 +44,11 @@ block display
                      if(isLoggedIn)
                         button(type='submit', class='question-body-answers-content', id='upvote') ⇧
                   div(class='answer'): p #{answer.content}
-      div(class='right-side-bar-container'): p Here are a bunch of questions!
+      div(class='right-side-bar-container'): p Dark Underflow Questions
          ul
             each question in allQuestions
                a(href=`/questions/${question.id}`)
                   div(class="listed-question-body")
                      li #{question.title}
-                        div(class='question-body')
-                        div Asked: #{question.updatedAt}
+                        //- div(class='question-body')
+                        //- div Asked: #{question.updatedAt}
