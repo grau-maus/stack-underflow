@@ -1,6 +1,9 @@
-extends layout
+//- ./views/error.pug
+
+extends index
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  h1= message || 'What happened? You\'re not suppose to be here!'
+  if(error.status)
+    h2= error.status
+    pre #{error.stack}

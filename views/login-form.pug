@@ -6,14 +6,16 @@ include utils.pug
 block display
     +validationErrorSummary(errors)
     form(action='/login', class='login-form', method='post')
-        //- fieldset 
+        //- fieldset
         legend Log In
         input(type='hidden' name='_csrf' value=csrfToken)
-        input(type= 'text', name='email', placeholder='email')
-        input(type= 'password', name='password', placeholder='password')
-        div(class= 'login-register-buttons')
-            button(type='submit', class= 'login-register') Login
-            button(type= 'submit', class= 'login-register-demo') Demo User Login
+        input(type='text', name='email', placeholder='email')
+        input(type='password', name='password', placeholder='password')
+        div(class='login-register-buttons')
+            button(type='submit', class='login') Login
+    form(action='/demo', class='demo-button', method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        button(type='submit', class= 'login-register-demo') Demo User Login
 
     div
         p: a(href="/signup") Not in the Underflow? Sign up
