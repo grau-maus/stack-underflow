@@ -27,18 +27,23 @@ block display
             form(action=`/questions/${question.id}/answers`, method=`post`)
                input(type='hidden', name='_csrf', value=csrfToken)
                if(isLoggedIn)
-                  label(for='answerContent') Add Answer:
+                  label(for='answerContent') Your Answer
                   textarea(name='answerContent', value=question.content)
-                  button(type='submit') Post Answer
+                  button(type='submit') Post Your Answer
          div(class='question-body-answers')
-            p Answers:
-               for answer in question.Answers
-                  div(class='each-answer')
-                     form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
-                        input(type='hidden', name='_csrf', value=csrfToken)
-                        if(isLoggedIn)
-                           button(type='submit', class='question-body-answers-content', id='upvote') ⇧
-                     div(class='answer'): p #{answer.content}
+            if(question.Answers.length > 1)
+               p #{question.Answers.length} Answers
+            else if(questions.Answers.length === 1)
+               p #{question.Answers.length} Answer
+            else
+               p There have been no answers submitted
+            for answer in question.Answers
+               div(class='each-answer')
+                  form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
+                     input(type='hidden', name='_csrf', value=csrfToken)
+                     if(isLoggedIn)
+                        button(type='submit', class='question-body-answers-content', id='upvote') ⇧
+                  div(class='answer'): p #{answer.content}
       div(class='right-side-bar-container'): p Here are a bunch of questions!
          ul
             each question in allQuestions
