@@ -1,7 +1,8 @@
-body {
+/* please do not write any rules for the html body */
+/* body {
     display: flexbox;
     max-width: 1250px;
-}
+} */
 
 div.signup-inputs {
     box-sizing: border-box;
@@ -19,7 +20,7 @@ div.login-div {
     width: 15%;
     display : flex;
     justify-content: center;
-    margin-left: 500px;
+/*     margin-left: 500px; */
     color: #eff1f3;
     font-size: xx-small;
 }
