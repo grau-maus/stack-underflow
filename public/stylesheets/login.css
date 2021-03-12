@@ -6,7 +6,7 @@
 
 body > div.login-form-content {
     display: flex;
-    max-width: 500 px;
+    max-width: 500px;
     color:  #eff1f3;
     font-family: Verdana,
     Geneva,
@@ -165,4 +165,3 @@ div.login-signup-link > p > a:hover {
 } */
 
 /* PLEASE DO NOT TOUCH RULES ABOVE -------------------------------------------------------------------- */
-
