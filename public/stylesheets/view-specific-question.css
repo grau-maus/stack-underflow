@@ -1,5 +1,5 @@
 body {
-    background-color:black;
+    background-color: #2E363E;
     display: flex;
     flex-direction: column;
 }
@@ -85,7 +85,7 @@ h2 {
     order: 4;
 }
 .question-body-answers {
-    
+
     justify-content: center;
     align-items: center;
 }

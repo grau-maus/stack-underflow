@@ -1,4 +1,4 @@
-body {
+/* body {
     width: 630px;
     margin: 0 auto;
     background-color: #323535;
@@ -8,7 +8,7 @@ body {
 .navbar-container {
     display: flex,
     width:
-    
+
 }
 .search-bar {
     &-bar
@@ -16,4 +16,4 @@ body {
 
     &input {
 
-}
+} */
