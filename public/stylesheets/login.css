@@ -3,19 +3,22 @@
 
 } */
 
-body>div.login-form-content {
+
+body > div.login-form-content {
     display: flex;
-    max-width : 500px;
-    color: #eff1f3;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 500 px;
+    color:  #eff1f3;
+    font-family: Verdana,
+    Geneva,
+    Tahoma,
+    sans-serif;
     font-weight: 100;
     border-radius: 6px;
-}  
+}
 
 button.login {
     display: flex;
-    justify-content: center;
-    background-color : #1182d7;
+    background-color: #1182d7;
     color: #eff1f3;
     margin-left: 475px;
     margin-top: 18px;
@@ -32,10 +35,13 @@ div.passwd-input-div {
 
 #login-box {
     display: flex;
-    justify-content: center;
+    justify-content : center;
     color: #eff1f3;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family : Arial,
+    Helvetica,
+    sans-serif;
 }
+
 
 div.demo-login{
     display: flex;
@@ -43,7 +49,9 @@ div.demo-login{
     color: #eff1f3;
 }
 
-button.login-register-demo{
+
+button.login-register-demo {
+
     background-color: #f95738;
     color: #eff1f3;
 
@@ -54,3 +62,107 @@ div.signup-div {
     justify-content: center;
     color: #eff1f3;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* PLEASE DO NOT TOUCH RULES BELOW -------------------------------------------------------------------- */
+
+/*
+
+div.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    position: absolute;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 380px;
+    height: 340px;
+    margin-left: 600px;
+    margin-top: 200px;
+    border: medium solid black;
+}
+
+form.login-form > legend {
+    color: #eff1f3;
+}
+
+form.login-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-around;
+    height: 110px;
+}
+
+
+div.login-register-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+
+button.login {
+    background-color: #1182d7;
+    color: #eff1f3;
+    width: 100px;
+    height: 30px;
+}
+
+button.login:hover {
+    background-color: #115488;
+    cursor: pointer;
+}
+
+
+button.login-register-demo {
+    background-color: #f95738;
+    color: #eff1f3;
+    height: 35px;
+}
+
+button.login-register-demo:hover {
+    background-color: #7a5249;
+    cursor: pointer;
+}
+
+div.login-signup-link > p > a {
+    text-decoration: none;
+}
+
+div.login-signup-link > p > a:hover {
+    background-color: #4b515c;
+} */
+
+/* PLEASE DO NOT TOUCH RULES ABOVE -------------------------------------------------------------------- */
+
