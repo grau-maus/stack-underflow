@@ -148,15 +148,13 @@ div > div > a > button.login-signup-button {
 
 /* LEFT SIDEBAR CONTAINER */
 div.left-side-bar {
-    position: sticky;
-    top: 0;
-    bottom: 0;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     max-width: 320px;
-    height: 1000px;
+    height: 100vh;
     box-shadow: 0px 3px 10px black;
 }
 
@@ -166,6 +164,7 @@ a.left-side-bar-anchor {
     margin-left: 160px;
     margin-top: 5px;
     margin-bottom: 5px;
+    margin-right: 40px;
 }
 
 /* LEFT SIDEBAR TEXT */
@@ -173,7 +172,9 @@ div.left-side-bar-text {
     font-family: system-ui;
     font-weight: 400;
     color: #EFF1F3;
+    width: 140px
 }
+
 
 /* LEFT SIDEBAR TEXT HOVERING */
 div.left-side-bar-text:hover {
