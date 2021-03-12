@@ -7,10 +7,11 @@ p {
     color: white
 }
 h2 {
-    color: goldenrod;
+    color:whitesmoke;
+    font-size: 12px;
 }
 .full-container {
-    background-color: gainsboro;
+    /* background-color: yellow; */
     display: flex;
     flex-direction: row;
 }
@@ -23,6 +24,7 @@ h2 {
 }
 
 .right-side-bar-container {
+    background-color:  #2e363e;
     color:rgb(119, 96, 50);
     order: 2;
 }
@@ -32,26 +34,28 @@ h2 {
 .asked {
     padding-top: 10px;
     padding-bottom: 10px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     order: 1;
 }
 .question-body-content {
     display: flex;
     flex-direction: row;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     padding-bottom: 10px;
-    background-color: dimgray;
+    /* background-color: dimgray; */
+    margin: 20px;
     order: 2;
 }
 .question-body-answer-form {
     padding-top: 10px;
+    margin: 10px;
     padding-bottom: 10px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     order: 3;
 }
 .question-body-answers {
     padding-bottom: 10px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     order: 4;
 }
 
@@ -65,6 +69,8 @@ h2 {
 }
 .question-body-content div p {
     color: wheat;
+    font-weight: bold;
+    width: 500px;
     padding-left: 15px;
 }
 .question-body-answer-form form {
@@ -74,9 +80,9 @@ h2 {
 
 .question-body-answer-form label {
     order: 1;
-    color: wheat;
+    color: white;
     padding-bottom: 15px;
-    padding-left: 15px;
+    padding-left: 5px;
 }
 .question-body-answer-form textarea {
     order: 2;
@@ -84,10 +90,11 @@ h2 {
 }
 .question-body-answer-form button {
     padding-bottom: 10px;
-    margin-left: 400px;
     padding-top: 10px;
     margin-top: 20px;
-    background-color:whitesmoke;
+    margin-left: 10px;
+    background-color: orange;
+    color: white;
     width: 100px;
     order: 3;
 }
@@ -99,19 +106,23 @@ h2 {
 }
 
 .question-body-answers p {
+    /* align-items: flex-end; */
+    align-self: flex-start;
     color: white;
+
 }
 .question-body-answers form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.question-body-answers button{
+/* .question-body-answers button{
 
-}
+} */
 .each-answer {
+    align-self: flex-start;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
 }
 .question-body-answers form {
     order: 1;
@@ -123,7 +134,8 @@ h2 {
 
 
 .right-side-bar-container p {
-    color: black;
+    color: grey;
+    margin: 20px;
     font-size: 20px;
 }
 .right-side-bar-container ul  {
@@ -132,9 +144,8 @@ h2 {
 }
 .right-side-bar-container li {
     padding: 10px;
+    margin: 20px;
 }
-
-
 
 .question-body-content form {
     order: 1;
@@ -147,9 +158,8 @@ h2 {
     order:
 } */
 
-
 .question-body-answers {
-
+    margin: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -158,12 +168,13 @@ h2 {
     padding: 15px;
 }
 
-
 /* .question-body-answers-content  {
     padding-top: 10px;
 } */
 
 button {
-    background-color: darkblue;
-    color: orange
+    background-color: orange;
+    /* height: 50px;
+    width: 40px; */
+    color:white;
 }
