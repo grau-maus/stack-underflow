@@ -19,7 +19,7 @@ block display
             form(action=`/questions/${question.id}/downvote`, method='post')
                input(type='hidden', name='_csrf', value=csrfToken)
                if(isLoggedIn)
-                  button(type='submit', class='question-body-content-downvote', id='downvote') DOWNVOTE
+                  button(type='submit', class='question-body-content-downvote', id='downvote') ⇩
             div: p #{question.content}
          div(class='question-body-answer-form')
             form(action=`/questions/${question.id}/answers`, method=`post`)
@@ -35,7 +35,7 @@ block display
                      form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
                         input(type='hidden', name='_csrf', value=csrfToken)
                         if(isLoggedIn)
-                           button(type='submit', class='question-body-answers-content', id='upvote') UPVOTE
+                           button(type='submit', class='question-body-answers-content', id='upvote') ⇧
                      div(class='answer'): p #{answer.content}
       div(class='right-side-bar-container'): p Here are a bunch of questions!
          ul
