@@ -30,6 +30,20 @@ module.exports = {
       },
       {
         username: faker.internet.userName(),
+        email: faker.internet.email(), 
+        hashedPassword: bcrypt.hashSync(faker.internet.password(), 10), 
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: faker.internet.userName(),
+        email: faker.internet.email(), 
+        hashedPassword: bcrypt.hashSync(faker.internet.password(), 10), 
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        username: faker.internet.userName(),
         email: faker.internet.email(),
         hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
         createdAt: new Date(),
