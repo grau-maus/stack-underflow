@@ -6,15 +6,30 @@ include utils.pug
 block display
     +validationErrorSummary(errors)
     form(action='/signup', class='signup-form', method='post')
-        legend Signup
+    
         input(type='hidden' name='_csrf' value=csrfToken)
-        input(type= 'text', name='username', placeholder='display name')
-        input(type= 'text', name='email', placeholder='email')
-        input(type= 'password', name='password', placeholder='password')
-        input(type= 'password', name='confirm-password', placeholder='confirm password')
-        div(class= 'login-register-buttons')
-            button(type='submit', class= 'signup') Signup
-    div
-        p: a(href="/login") Have an account and missed ALL the login links? LOGIN
+        div(id='signup-box' class='signup-inputs')
+            div(id='display-name' class='signup-inputs')
+                div(class='username-input-div')
+                    legend Display Name
+                    input(type= 'text', name='username',        placeholder='display name')
+
+                div(id='signup-email' class='signup-inputs')
+                    legend Email
+                    input(type= 'text', name='email',           placeholder='email')
+
+                div(id='signup-password' class='signup-inputs')
+                    legend Password
+                    input(type= 'password', name='password',  placeholder='password')
+
+                div(id='signup-usempapa' class='signup-inputs')
+                    legend Confirm Password
+                    input(type= 'password' name='confirm-password', placeholder='confirm password')
+
+                div(class= 'signup-btn-div')
+                    button(type='submit', class= 'signup') Signup
+
+        div(class='login-div')
+            p: a(href="/login") Have an account and missed ALL the login links? LOGIN
 
     footer
