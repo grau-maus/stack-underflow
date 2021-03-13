@@ -1,8 +1,5 @@
-body {
-    display: flexbox;
-    max-width: 1250px;
-    
-}
+/* please do not write any rules for the html body */
+
 /* the signup form */
 div#signup-box.signup-form {
     display: flex;

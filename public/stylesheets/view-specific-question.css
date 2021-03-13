@@ -1,14 +1,12 @@
-
-p {
-    color: white
-}
-h2 {
+/* p {
+    color: white;
+} */
+/* h2 {
     color:whitesmoke;
     font-size: 12px;
-}
+} */
 
 /* the right side bar and the question answers body */
-
 .full-container {
     /* background-color: yellow; */
     grid-column-start: 2;
@@ -20,6 +18,7 @@ h2 {
 
     display: flex;
     flex-direction: row;
+    /* overflow: scroll; */
 }
 
 .question-body-container {
@@ -27,6 +26,7 @@ h2 {
     order: 1;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 .right-side-bar-container {
@@ -39,6 +39,7 @@ h2 {
 .title {
     /* margin-top: 30px; */
     color: white;
+    padding-left: 20px;
 }
 .asked {
     padding-top: 10px;
@@ -65,11 +66,12 @@ h2 {
 .question-body-answers {
     padding-bottom: 10px;
     /* border: 2px solid white; */
-    order: 4;
+    order: 5;
 }
 
 .asked h2 {
-    padding-left: 20px;
+    padding-left: 25px;
+    color: white;
 }
 .question-body-content form {
     display: flex;
@@ -104,29 +106,34 @@ h2 {
     padding-bottom: 10px;
     padding-top: 10px;
     margin-top: 20px;
-    margin-left: 10px;
+    /* margin-left: 5px; */
     background-color: orange;
     color: white;
-    width: 100px;
+    width: 135px;
+    border-radius: 5px;
     order: 3;
 }
 .question-body-content-downvote {
     font-size: 25px;
     color: white;
+    background-color: orange;
+    border-radius: 15px;
+    height: 50px;
 }
 
 /* grandparent */
  .question-body-answers {
     display: flex;
     flex-direction: column;
+    /* overflow-y: scroll; */
 }
-
-.question-body-answers p {
-    /* align-items: flex-end; */
-    align-self: flex-start;
+.number-answers {
     color: white;
-
+    order: 4;
+    margin-left: 25px;
+    margin-top: 50px;
 }
+
 .question-body-answers form {
     display: flex;
     flex-direction: column;
@@ -138,6 +145,9 @@ h2 {
     display: flex;
     /* flex-direction: row; */
 }
+.each-answer p {
+    color: white;
+}
 .question-body-answers form {
     order: 1;
 }
@@ -146,19 +156,22 @@ h2 {
 }
 
 
-
 .right-side-bar-container p {
-    color: grey;
+    color: lightgray;
     margin: 20px;
+    padding: 10px;
     font-size: 20px;
 }
 .right-side-bar-container ul  {
     list-style-type: none;
+    overflow-y: hidden;
+    /* text-decoration: none; */
 
 }
 .right-side-bar-container li {
     padding: 10px;
     margin: 20px;
+    /* text-decoration: none;  doesn't work.... */
 }
 
 .question-body-content form {
@@ -167,6 +180,7 @@ h2 {
 
 .question-body-content div {
     order: 2;
+
 }
 /* .question-body-content button {
     order:
@@ -190,10 +204,12 @@ h2 {
 .question-body-answers button {
     background-color: orange;
     border-radius: 15px;
-    height: 80px;
+    height: 50px;
     color: white;
 }
-
+.right-side-bar-container a {
+    text-decoration: none;
+}
 /* button {
     background-color: orange; */
     /* height: 50px;
