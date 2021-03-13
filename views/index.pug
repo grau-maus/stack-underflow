@@ -10,27 +10,26 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  div(class='navbar-background')
-  div(class='navbar')
-    div(class='navbar-welcome-title')
-      h1(class='navbar-header')= title
-      p Welcome to Stack Underflow
+  div(class='navbar-container')
+    div(class='navbar')
+      div(class='navbar-welcome-title')
+        p(class='navbar-header') Welcome to Stack Underflow!
 
-    div(class='navbar-logo')
-      img(class='navbar-logo', src='/images/logo-stackunderflow.png')
+      div(class='navbar-logo')
+        img(class='navbar-logo', src='/images/underflowStack.png')
 
-    form(action='/questions', method='post', class='search-bar-container')
-      input(type='hidden', name='_csrf', value=csrfToken)
-      input(class='search-bar', type='text', name='query', placeholder='🔍')
-      button(type='submit', class='search-button') Search
+      form(action='/questions', method='post', class='search-bar-container')
+        input(type='hidden', name='_csrf', value=csrfToken)
+        input(class='search-bar', type='text', name='query', placeholder='🔍')
+        button(type='submit', class='search-button') Search
 
-    div(class='login-register-buttons-container')
-      div(class= 'login-register-buttons')
-        a(href='/login' class='login-signup-btn')
-          button(type='submit' class='login-signup-button') Login
-      div(class= 'login-register-buttons')
-        a(href='/signup' class='login-signup-btn')
-          button(type='submit' class='login-signup-button') Signup
+      div(class='login-register-buttons-container')
+        div(class= 'login-register-buttons')
+          a(href='/login' class='login-signup-btn')
+            button(type='submit' class='login-signup-button') Login
+        div(class= 'login-register-buttons')
+          a(href='/signup' class='login-signup-btn')
+            button(type='submit' class='login-signup-button') Signup
 
   div(class='left-side-bar')
     a(href='/', class='left-side-bar-anchor')
@@ -41,10 +40,11 @@ block content
   block display
 
   div(class='footer')
-    div(class='footer-contact-info')
-      a(href='http://github.com/LaTCheatam')
-      a(href='http://github.com/mimike')
-      a(href='http://github.com/whitelotus718')
-      a(href='http://github.com/grau-maus')
-    div(class='footer-appacademy')
-      a(href='http://aaonline.io')
+    div(class='footer-container')
+      div(class='footer-contact-info') Contact us:
+        a(href='http://github.com/LaTCheatam') Tanya
+        a(href='http://github.com/mimike') Mimi
+        a(href='http://github.com/whitelotus718') Minhaj
+        a(href='http://github.com/grau-maus') Josh
+      div(class='footer-appacademy')
+        a(href='http://aaonline.io') App Academy

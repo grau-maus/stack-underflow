@@ -1,11 +1,3 @@
-/* p {
-    color: white;
-} */
-/* h2 {
-    color:whitesmoke;
-    font-size: 12px;
-} */
-
 /* the right side bar and the question answers body */
 .full-container {
     /* background-color: yellow; */
@@ -41,12 +33,14 @@
     color: white;
     padding-left: 20px;
 }
+
 .asked {
     padding-top: 10px;
     padding-bottom: 10px;
     /* border: 2px solid white; */
     order: 1;
 }
+
 .question-body-content {
     display: flex;
     flex-direction: row;
@@ -56,6 +50,7 @@
     margin: 20px;
     order: 2;
 }
+
 .question-body-answer-form {
     padding-top: 10px;
     margin: 10px;
@@ -63,6 +58,7 @@
     /* border: 2px solid white; */
     order: 3;
 }
+
 .question-body-answers {
     padding-bottom: 10px;
     /* border: 2px solid white; */
@@ -73,11 +69,13 @@
     padding-left: 25px;
     color: white;
 }
+
 .question-body-content form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .question-body-content div p {
     color: white;
     font-weight: bold;
@@ -103,6 +101,7 @@
     height: 170px;
     width: 700px;
 }
+
 .question-body-answer-form button {
     padding-bottom: 10px;
     padding-top: 10px;
@@ -114,6 +113,7 @@
     border-radius: 5px;
     order: 3;
 }
+
 .question-body-content-downvote {
     font-size: 25px;
     color: white;
@@ -128,6 +128,7 @@
     flex-direction: column;
     /* overflow-y: scroll; */
 }
+
 .number-answers {
     color: white;
     font-size: 20px;
@@ -147,16 +148,18 @@
     display: flex;
     /* flex-direction: row; */
 }
+
 .each-answer p {
     color: white;
 }
+
 .question-body-answers form {
     order: 1;
 }
+
 .question-body-answers .answer {
     order: 2;
 }
-
 
 .right-side-bar-container p {
     color: lightgray;
@@ -164,12 +167,14 @@
     padding: 10px;
     font-size: 20px;
 }
+
 .right-side-bar-container ul  {
     list-style-type: none;
     overflow-y: hidden;
     /* text-decoration: none; */
 
 }
+
 .right-side-bar-container li {
     padding: 10px;
     margin: 20px;
@@ -184,9 +189,6 @@
     order: 2;
 
 }
-/* .question-body-content button {
-    order:
-} */
 
 .question-body-answers {
     margin: 20px;
@@ -203,28 +205,23 @@
 .question-body-answers-content  {
     font-size: 25px;
 }
+
 .question-body-answers button {
     background-color: orange;
     border-radius: 15px;
     height: 50px;
     color: white;
 }
+
 .right-side-bar-container a {
     text-decoration: none;
 }
+
 .right-side-bar-container p {
     margin-top: 30px;
-
-
 }
+
 .listed-question-body{
     margin-right: 40px;
     color: #1182D7;
 }
-/* button {
-    background-color: orange; */
-    /* height: 50px;
-    width: 40px;
-    color:white;
-    border-radius: 15px;
-} */

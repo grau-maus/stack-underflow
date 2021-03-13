@@ -16,6 +16,12 @@ router.get('/questions', csrfProtection, asyncHandler(async (req, res) => {
         include: [User, Answer, Vote]
     });
 
+    // const answers = await Answer.findAll({
+    //     where: {
+    //         questionId,
+    //     }
+    // })
+
     res.render('questions', {
         title: 'Questions',
         questions,
@@ -50,8 +56,10 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
     });
 
     const allQuestions = await Question.findAll({
-        include: [User]
+        include: User
     });
+
+    console.log(question);
 
     // initializes 'isLoggedIn' with a boolean depending
     // on the state of 'req.session.auth'
@@ -98,6 +106,9 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
         const question = await Question.findByPk(questionId, {
             include: [User, Answer, Vote]
         });
+        const allQuestions = await Question.findAll({
+            include: User
+        });
 
         // initializes 'isLoggedIn' with a boolean depending
         // on the state of 'req.session.auth'
@@ -107,6 +118,7 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
             title: question.title,
             question,
             errors,
+            allQuestions,
             isLoggedIn,
             csrfToken: req.csrfToken()
         });

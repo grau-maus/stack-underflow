@@ -1,26 +1,100 @@
 /* please do not write any rules for the html body */
-/* body {
-    display: flexbox;
-    max-width: 1250px;
-} */
 
-div.signup-inputs {
+/* the signup form */
+div#signup-box.signup-form {
+    display: flex;
+    grid-column-start: 3;
+    grid-column-end:four;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /* justify-content: center; */
+    /* align-items: left; */
     box-sizing: border-box;
-    width: 25%;
+    border: 1px solid #f95738;
+    width: 40%;
+    height: 50%;
     padding: 15px;
     margin: 5px 0 22px 0;
-    display: inline-block;
+    display:inline-block;
     background-color: #293646;
+    margin-left: 50px;
+    margin-top: 86px;
+    justify-self: end;
     color: #eff1f3;
-    position: relative;
-    /* justify-content: center; */
+    font-family : Arial,
+    Helvetica,
+    sans-serif;
 }
 
+/* the inputs */
+div.signup-inputs {
+    color: #eff1f3;
+    padding: 6px;
+}
+
+/* the signup button */
+div.signup-btn-div {
+    display:flex;
+    margin-left: 50px;
+}
+div.signup-btn-form {
+    background-color: #1182d7;
+    align-content: center;
+}
+
+/* the login */
 div.login-div {
+    display: flex;
+    grid-column-start: 2;
+    grid-column-end: three;
+    grid-row-start: row4-start;
+    grid-row-end: 5;
     width: 15%;
     display : flex;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 500px;
+    color: #eff1f3;
+    font-size: 7px;
+}
+div.login-msg {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: two;
+    grid-row-start: row4-end;
+    grid-row-end: 5;
+    width: 15%;
+    display : flex;
+    justify-content: left;
     margin-left: 500px;
     color: #eff1f3;
     font-size: xx-small;
+}
+
+/* talking snark */
+div.snark-box {
+    display: flex;
+    grid-column-start: 2;
+    grid-column-end: three;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    justify-self: left;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #f95738;
+    width: 65%;
+    height: 50%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display:inline-block;
+    background-color: #293646;
+    margin-left: 125px;
+    margin-top: 86px;
+    color: #eff1f3;
+
+}
+
+div.snark-div{
+    justify-content: center;
+    margin-top: 100px;
+    margin-left: 100px;
 }
