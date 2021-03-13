@@ -1,7 +1,6 @@
 body {
-    display: grid;
-    background-color: #2e363e;
-
+    /* display: grid; */
+    background-color: #2E363E;
 }
 
 /* the container for login inputs */
