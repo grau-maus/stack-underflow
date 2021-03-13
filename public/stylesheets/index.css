@@ -1,31 +1,34 @@
+/* DIV CONTAINING THE NAVBAR CONTAINER. I KNOW. */
+.navbar-container {
+    position: fixed;
+    z-index: 1;
+    grid-area: 1 / 1 / 2 / 4;
+    box-shadow: 0px 3px 10px black;
+    border-bottom: medium solid #DF553D;
+    background-color: #2E363E;
+    width: 100vw;
+    height: 121px;
+}
+
 /* DIV CONTAINING ALL THE NAVBAR ELEMENTS */
 /* grid-area: <row-start> / <column-start> / <row-end> / <column-end> */
 .navbar {
-    position: relative;
-    z-index: 1;
-    grid-area: 1 / 1 / 2 / 4;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    background-color: #2E363E;
+    justify-content: center;
     color: #EFF1F3;
-    box-shadow: 0px 3px 10px black;
-    border-bottom: medium solid #DF553D;
     justify-self: stretch;
 }
 
 /* DIV CONTAINING TITLE & WELCOME TEXT */
 div.navbar-welcome-title {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    order: 2;
 }
 
 /* HIDE WELCOME TEXT */
 @media (max-width: 1225px) {
-    h1.navbar-header + p {
+    p.navbar-header {
         display: none;
     }
 }
@@ -41,22 +44,8 @@ div.navbar-welcome-title {
     }
 }
 
-/* HIDE TITLE */
-@media (max-width: 978px) {
-    h1.navbar-header {
-        display: none;
-    }
-}
-
-/* TITLE */
-h1.navbar-header {
-    color: #EFF1F3;
-    font-family: system-ui;
-    font-size: 31px;
-}
-
 /* WELCOME P TAG */
-h1.navbar-header + p {
+p.navbar-header {
     font-family: system-ui;
     font-weight: 600;
     font-size: 28px;
@@ -66,6 +55,7 @@ h1.navbar-header + p {
 
 /* LOGO CONTAINER */
 div.navbar-logo {
+    order: 1;
     display: flex;
     justify-content: center;
     max-width: 386px;
@@ -87,6 +77,7 @@ form.search-bar-container{
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    order: 3;
 }
 
 /* SEARCH BAR INPUT FIELD */
@@ -129,6 +120,11 @@ div > div > a > button.login-signup-button {
     margin-top: 10px;
 }
 
+/* LOGIN & REGISTER BUTTON CONTAINER */
+div.login-register-buttons-container {
+    order: 4;
+}
+
 
 
 
@@ -140,14 +136,15 @@ div > div > a > button.login-signup-button {
 /* LEFT SIDEBAR CONTAINER */
 /* grid-area: <row-start> / <column-start> / <row-end> / <column-end> */
 div.left-side-bar {
-    position: sticky;
+    position: fixed;
     z-index: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 100%;
-    box-shadow: 1px -50px 4px black;
+    height: 100vh;
+    width: 181px;
+    box-shadow: 1px 0px 4px black;
     grid-area: 2 / 1 / 4 / 1;
     justify-self: stretch;
     align-self: stretch;
