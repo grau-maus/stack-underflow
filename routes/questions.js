@@ -16,6 +16,12 @@ router.get('/questions', csrfProtection, asyncHandler(async (req, res) => {
         include: [User, Answer, Vote]
     });
 
+    // const answers = await Answer.findAll({
+    //     where: {
+    //         questionId,
+    //     }
+    // })
+
     res.render('questions', {
         title: 'Questions',
         questions,
