@@ -1,8 +1,9 @@
 body {
   display: grid;
   grid-template-columns: 181px 1.6fr 1fr;
-  grid-template-rows: 121px 2fr 0.42fr;
+  grid-template-rows: 121px 2fr 150px;
   justify-items: stretch;
+  background-color: #2E363E;
 }
 
 a {
