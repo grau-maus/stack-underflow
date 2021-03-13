@@ -1,6 +1,11 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr 1fr;
+  grid-template-rows: auto 2fr auto;
+  justify-items: stretch;
+  align-items: stretch;
 }
 
 a {

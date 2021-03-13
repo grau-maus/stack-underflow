@@ -1,42 +1,60 @@
 //- ./views/questions-ask-form.pug
 
 extends index
+
+//- head
+//-     block head
+//-         link(rel='stylesheet' href='/stylesheets/questions-form.css')
+
+
+//- block display
+    //- div(class='header') Header
+    //-     h2 Stack Underflow
+    //-     input(type="text", placeholder="Search")
+    //- p
+
 block display
-    div(class='header') Header
-        h2 Stack Underflow
-        input(type="text", placeholder="Search")
-    p
-    div(class='left-side-bar_form')
-        a(href='/')
-            div Homepage
-        a(href='http://github.com')
-            div Find the underverse
-    div(class='right-side-bar_form'): p Step 1 Draft your question
-        div
-            ul
-                li= `1. Dont ask dumb questions`
-                li= `2. There are no dumb questions`
-                li= `3. Just ask stoopid`
-    div(class="question-ask-body-container")
-        div
-            h4 Ask the Underflow!
-        div
-            h3 WARNING: Your question may cause you to be sucked under the flow
-        form.pure-form(action="/questions/form", method="post", class="question-form-container")
-            fieldset
-                input(type="hidden" name="_csrf" value=csrfToken)
-                div(class="question-form-title")
-                    h2 Title
-                    h3 Be specfic and imagine you are asking a question to another person
-                    input(name="questionTitle", type=text, placeholder="Title your ? here")
-                p
-                div(class="question-form-body")
-                    h2 Body
-                    h3 Include all the information someone would need to answer your question
-                    textarea(name="content", type=text, placeholder="Ask your question here")
-                p
-                div
-                    button(class="submit-question-button", type="submit") Submit
-                if(errors)
-                    each error in errors
-                        h5= error
+    div(class="question-form-container")
+
+        div(class="question-form-body")
+            div(class="question-body-container")
+                div(class="ask")
+                    h1 Ask the Underflow!
+                div(class="warning")
+                    h3 WARNING! : Your question may cause you to be sucked under the flow
+                div(class="question-body-form")
+                    form.pure-form(action="/questions/form", method="post", class="question-form-container")
+                        fieldset
+                            //- input(type="hidden" name="_csrf" value=csrfToken)
+                            div(class="question-form-title")
+                                h4 Title
+                                p Be specfic and imagine you are asking a question to another person
+                                input(name="questionTitle", type=text, placeholder="Title your ? here")
+                            p
+                            div(class="question-form-body")
+                                h4 Body
+                                p Include all the information someone would need to answer your question
+                                textarea(name="content", type=text, placeholder="Ask your question here")
+                            p
+                            div(class="button")
+                                button(class="submit-question-button", type="submit") Submit
+                    if(errors)
+                        each error in errors
+                            h5= error
+
+        div(class="question-form-right-side-bar")      
+            div(class="right-side-bar-container")
+                div(class='right-side-bar_form')
+                    div(class="side-bar-head")
+                        h4 Step 1 Draft your question
+                    div(class="side-bar-body")
+                        ul
+                            li= `1. Dont ask dumb questions`
+                            li= `2. There are no dumb questions`
+                            li= `3. Just ask stoopid`
+
+        
+
+
+
+

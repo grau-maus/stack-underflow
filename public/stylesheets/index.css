@@ -1,17 +1,18 @@
-
 /* DIV BACKGROUND ONLY*/
 .navbar-background {
+    display: grid;
+    /* grid-area: 1 / 1 / 2 / 4; */
     position: fixed;
     height: 100px;
-    width: 100%;
+    /* width: 100%; */
     background-color: #2E363E;
     border-bottom: medium solid #DF553D;
     box-shadow: 0px 3px 10px black;
 }
-
 /* DIV CONTAINING ALL THE NAVBAR ELEMENTS */
 .navbar {
     top: 0px;
+    grid-area: 1 / 1 / 2 / 4;
     position: sticky;
     z-index: 50;
     display: flex;
@@ -19,13 +20,12 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     height: 100px;
-    width: auto;
+    /* width: auto;  */
     background-color: #2E363E;
     color: #EFF1F3;
     border-bottom: medium solid #DF553D;
-    max-width: 1920px;
+    /* max-width: 1920px; */
 }
-
 /* DIV CONTAINING TITLE & WELCOME TEXT */
 div.navbar-welcome-title {
     display: flex;
@@ -33,39 +33,33 @@ div.navbar-welcome-title {
     justify-content: space-around;
     align-items: center;
 }
-
 /* HIDE WELCOME TEXT */
 @media (max-width: 1225px) {
     h1.navbar-header + p {
         display: none;
     }
 }
-
 /* HIDE IMAGE TAG */
 @media (max-width: 845px) {
     img.navbar-logo {
         display: none;
     }
-
     .navbar {
         justify-content: space-around;
     }
 }
-
 /* HIDE TITLE */
 @media (max-width: 978px) {
     h1.navbar-header {
         display: none;
     }
 }
-
 /* TITLE */
 h1.navbar-header {
     color: #EFF1F3;
     font-family: system-ui;
     font-size: 31px;
 }
-
 /* WELCOME P TAG */
 h1.navbar-header + p {
     font-family: system-ui;
@@ -74,7 +68,6 @@ h1.navbar-header + p {
     margin: 0px;
     margin-bottom: 10px;
 }
-
 /* LOGO CONTAINER */
 div.navbar-logo {
     display: flex;
@@ -82,7 +75,6 @@ div.navbar-logo {
     max-width: 386px;
     max-height: 97px;
 }
-
 /* LOGO IMAGE */
 img.navbar-logo {
     object-fit: contain;
@@ -90,7 +82,6 @@ img.navbar-logo {
     max-height: 100%;
     padding-bottom: 20px;
 }
-
 /* SEARCH BAR CONTAINER */
 form.search-bar-container{
     width: 370px;
@@ -99,7 +90,6 @@ form.search-bar-container{
     flex-wrap: nowrap;
     justify-content: space-between;
 }
-
 /* SEARCH BAR INPUT FIELD */
 input.search-bar {
     margin-top: 20px;
@@ -107,7 +97,6 @@ input.search-bar {
     height: 38px;
     background-color: #EFF1F3;
 }
-
 /* ALL BUTTONS IN NAVBAR */
 div.navbar button {
     background-color: #293646;
@@ -116,48 +105,37 @@ div.navbar button {
     font-weight: 600;
     cursor: pointer;
 }
-
 /* ALL BUTTONS IN NAVBAR, HOVERING*/
 div.navbar button:hover {
     background-color: #205c8b;
 }
-
 /* SEARCH BAR BUTTON */
 button.search-button {
     margin-top: 25px;
     height: 30px;
 }
-
 /* LOGIN / REGISTER BUTTONS */
 button.login-signup-button {
     height: 30px;
     margin: 2px;
     width: 80px
 }
-
 /* LOGIN BUTTON */
 div > div > a > button.login-signup-button {
     margin-top: 10px;
 }
-
-
-
-
-
-
-
 /* LEFT SIDEBAR CONTAINER */
 div.left-side-bar {
+    grid-area: 2 / 1 / 3 / 2;
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    max-width: 320px;
-    height: 100vh;
+    /* max-width: 320px;
+    height: 100vh; */
     box-shadow: 0px 3px 10px black;
 }
-
 /* LEFT SIDEBAR ANCHOR TAGS */
 a.left-side-bar-anchor {
     text-decoration: none;
@@ -166,7 +144,6 @@ a.left-side-bar-anchor {
     margin-bottom: 5px;
     margin-right: 40px;
 }
-
 /* LEFT SIDEBAR TEXT */
 div.left-side-bar-text {
     font-family: system-ui;
@@ -174,10 +151,7 @@ div.left-side-bar-text {
     color: #EFF1F3;
     width: 140px
 }
-
-
 /* LEFT SIDEBAR TEXT HOVERING */
 div.left-side-bar-text:hover {
     color: #8D949D;
 }
-
