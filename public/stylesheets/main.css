@@ -22,7 +22,7 @@
 .each-question-container{
     display: flex;
     flex-direction: row;
-    border: 1px solid grey;
+    border-bottom: 1px solid grey;
     margin: 5px;
     justify-content:left;
 }
@@ -58,14 +58,14 @@
     /* border: 1px solid wheat; */
     color: #1182D7;
     order: 3;
-    align-items: flex-end;
-    display: flex;
-    flex-direction: column;
+    align-items: right;
+    /* display: flex;
+    flex-direction: column; */
     margin-left: 10px;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     padding: 15px;
 }
 
-/* .user-name p {
-    justify-items: right;
-} */
+.user-name p {
+    align-items: right;
+}
