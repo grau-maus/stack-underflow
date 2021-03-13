@@ -21,6 +21,55 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: "Why does this AJAX call not redirect to the `/login` URL?",
+        content: "I am making a Node Express app with Handlebars. I get a success message printed in the console but the URL is not changed to /login, and hence the page never gets rendered, although, when I manually type the URL localhost:3000/login into the browser, I can see my login page rendered. Therefore, I wanted to know why the AJAX is not working.",
+        userId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         title: "Is it possible to sort an almost sorted array in parallel?",
         content: "An 'almost sorted array' is defined here as each element being at most k positions away from their position in a sorted array. The array size is n. The basic algorithm in serial is using a min heap (assuming you want to sort in ascending order), which gives O((n-k)log k + k) running time, or alternatively, you can use insertion sort and get O(nk) running time.For either of these algorithms, I don't see a good way to parallelize it. You can, of cause, split the array up into contiguous chunks, and send each segment to a single thread, but the issue is there's always going to some elements at the ends of the segments that could fall into a different segment in the sorted array. So if you were to use multithreading, you would run into data race issues, or alternatively, you can add in locks to avoid the data race issues at the cost of performance. Are there better ways to solve this problem in parallel?",
         userId: Math.floor(Math.random() * (10 - 1) + 1),
