@@ -12,6 +12,8 @@ block display
    div(class='full-container')
       div(class='main-header'): p Top Uber Questions
       div(class='main-container')
+         div(class='ask-question-div')
+         a(href='/questions/form'): button(type='submit' class="ask-question-button") Ask a Good Question
          each question in questions
             a(href=`/questions/${question.id}`)
                div(class='each-question-container')

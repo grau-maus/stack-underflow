@@ -1,3 +1,4 @@
+
 .full-container {
     background-color: #323535;
     flex: display;
@@ -9,16 +10,28 @@
     margin: 15px;
 
 }
+.ask-question-div a {
+    width: 20px;
+}
+.ask-question-button {
+    background-color: orange;
+    margin-left: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 190px;
+    height: 30px;
+    margin-left: 15px;
+}
 .main-container {
     grid-area: 2 / 2 / 3 / 4;
     display: flex;
     flex-direction: column;
     color: white;
-
 }
 .main-container a {
     text-decoration: none;
 }
+
 .each-question-container{
     display: flex;
     flex-direction: row;
