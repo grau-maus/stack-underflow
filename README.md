@@ -9,3 +9,31 @@ Things to note:
 * Run `npx dotenv sequelize db:create` then `npx sequelize db:migrate`, and finally `npx sequelize db:seed:all` (if there are any seed files)
 * If there are any database issues, drop the database with `npx dotenv sequelize db:drop`, edit any line of code that needs to be edited, then run the previous commands again
 * Session secret key is provided in the group's slack channel
+
+# Stack Underflow
+***
+https://stacked-underflow.herokuapp.com/
+https://github.com/grau-maus/stack-underflow/wiki/MVP-Feature-List
+
+
+Stack Underflow is a place for coders to... 
+
+## Technologies Used
+
+* Sequelize
+* Pug
+* Express
+* CSS
+* JavaScript
+
+## Features
+
+- Signup
+- Login 
+- Demo User
+- Ask Questions
+- View Questions
+- Downvote a question
+- Upvote an answer
+- Answer Question
+- Search
