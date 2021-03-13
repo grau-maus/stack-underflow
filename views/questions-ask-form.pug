@@ -2,6 +2,8 @@
 
 extends index
 
+include utils
+
 //- head
 //-     block head
 //-         link(rel='stylesheet' href='/stylesheets/questions-form.css')
@@ -17,17 +19,18 @@ block display
     div(class="question-form-container")
 
         div(class="question-form-body")
-            div(class="question-body-container")
-                div(class="ask")
-                    h1 Ask the Underflow!
-                div(class="warning")
-                    h3 WARNING! : Your question may cause you to be sucked under the flow
+            div(class="question-form-body-container")
                 div(class="question-body-form")
+                    +validationErrorSummary(errors)
                     form.pure-form(action="/questions/form", method="post", class="question-form-container")
                         fieldset
-                            //- input(type="hidden" name="_csrf" value=csrfToken)
+                            input(type="hidden" name="_csrf" value=csrfToken)
+                            div(class="ask")
+                                h1 Ask the Underflow!
+                            div(class="warning")
+                                h3 WARNING! : Your question may suck you under the flow
                             div(class="question-form-title")
-                                h4 Title
+                                h3 Title
                                 p Be specfic and imagine you are asking a question to another person
                                 input(name="questionTitle", type=text, placeholder="Title your ? here")
                             p
@@ -38,20 +41,18 @@ block display
                             p
                             div(class="button")
                                 button(class="submit-question-button", type="submit") Submit
-                    if(errors)
-                        each error in errors
-                            h5= error
+                    //- if(errors)
+                    //-     each error in errors
+                    //-         h5= error
 
         div(class="question-form-right-side-bar")      
-            div(class="right-side-bar-container")
-                div(class='right-side-bar_form')
-                    div(class="side-bar-head")
-                        h4 Step 1 Draft your question
-                    div(class="side-bar-body")
-                        ul
-                            li= `1. Dont ask dumb questions`
-                            li= `2. There are no dumb questions`
-                            li= `3. Just ask stoopid`
+            h4(class="draft") Step 1 Draft your question
+            p The community is here to help you with specific coding, algorithm, or language problems.
+            p Avoid asking opinion-based questions.
+            ul(class="draft")
+                li 1. Dont ask dumb questions
+                li 2. There are no dumb questions
+                li 3. Don't be nebulous 
 
         
 

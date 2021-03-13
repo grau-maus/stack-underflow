@@ -1,71 +1,91 @@
-/* body {
-    background-color: #1c1d3b;
-
-} */
-
-
-body > div.login-form-content {
-    display: flex;
-    max-width: 500 px;
-    color:  #eff1f3;
-    font-family: Verdana,
-    Geneva,
-    Tahoma,
-    sans-serif;
-    font-weight: 100;
-    border-radius: 6px;
-}
-
-button.login {
-    display: flex;
-    background-color: #1182d7;
-    color: #eff1f3;
-    margin-left: 475px;
-    margin-top: 18px;
-}
-
-div.email-input-div {
-    padding: 6px;
-}
-
-div.passwd-input-div {
-    padding: 6px;
-}
-
-
+/* the container for login inputs */
 #login-box {
     display: flex;
-    justify-content : center;
+    grid-column-start: 2;
+    grid-column-end: four;
+    grid-row-start: row2-start;
+    grid-row-end: 3;
+    /* justify-content: center; */
+    align-items: right;
+    box-sizing: border-box;
+    border: 1px solid #f95738;
+    width: 25%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display:inline-block;
+    background-color: #293646;
+    margin-left: 125px;
+
     color: #eff1f3;
     font-family : Arial,
     Helvetica,
     sans-serif;
 }
 
+/* email container/input */
+div.email-input-div {
+    padding: 6px;
+    margin-left: 17px;
+}
 
-div.demo-login{
+/* password container/input */
+div.passwd-input-div {
+    /* justify-content: center; */
+    padding: 6px;
+    margin-left: 17px;
+
+}
+/* User login button container */
+button.login {
     display: flex;
+    border-radius: 2px;
     justify-content: center;
+    background-color: #1182d7;
     color: #eff1f3;
+    margin-left: 25px;
+    margin-top: 18px;
+}
+
+/* User login button */
+div.login-btn-div {
+    justify-content: center;
+    margin-left: 53px;
 }
 
 
-button.login-register-demo {
+/* demo user container  */
+div.demo-login{
+    display: flex;
+    /* justify-content: center; */
+    color: #eff1f3;
+    margin-left: 55px;
+}
 
+/* demo user login button */
+button.login-register-demo {
+    display:flex;
+    margin-left: 55px;
     background-color: #f95738;
     color: #eff1f3;
 
 }
 
+/* signup message */
+.signup-msg {
+    justify-content: right;
+    margin-left: 30px;
+    font: 10px;
+    color: #f95738;
+
+}
+
+/* signup link */
 div.signup-div {
     display: flex;
     justify-content: center;
     color: #eff1f3;
+    font-size: 13px;
 }
-
-
-
-
 
 
 
@@ -165,4 +185,3 @@ div.login-signup-link > p > a:hover {
 } */
 
 /* PLEASE DO NOT TOUCH RULES ABOVE -------------------------------------------------------------------- */
-

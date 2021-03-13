@@ -4,32 +4,32 @@ extends index
 include utils.pug
 
 block display
-    +validationErrorSummary(errors)
-    //- div(class='login-form-container')
-    //-     div(class='login-form-contents')
-    form(action='/login', class='inputs-container', method='post')
-        //- fieldset
-        input(type='hidden' name='_csrf' value=csrfToken)
-        div(id='login-box' class='login-inputs')
+    div(id='login-box' class='login-inputs')
+        +validationErrorSummary(errors)
+        form(action='/login', class='inputs-container', method='post')
 
             div(class='email-input-div')
                 legend  Email
-                input(class='inputs' type='text',  name='email', placeholder='email')
+                input(class='inputs' type='text', name='email',   placeholder='email')
 
             div(class='passwd-input-div')
                 legend  Password
-                input(class='inputs' type='password',name='password', placeholder='password')
+                input(class='inputs' type='password' name='password',  placeholder='password')
 
-        div(class='login-btn-div')
-            button(type='submit',   class='login') Login      
-    
-        div(class='demo-login')
-            form(action='/demo', class='demo-button', method='post')
+            div(class='login-btn-div')
                 input(type='hidden' name='_csrf' value=csrfToken)
-                button(type='submit', class= 'login-register-demo') Demo Login
+                button(type='submit',  class='login') Login      
 
-    div(class='signup-div')
-        p: a(href="/signup") Not in the Underflow? Sign up
+        div(class='demo-login')
+        form(action='/demo', class='demo-button', method='post')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            button(type='submit', class= 'login-register-demo') Demo Login
+
+        div(class='signup-msg')
+            p Not in the Underflow?
+
+        div(class='signup-div')
+            p: a(href="/signup") Sign up
 
     footer
 
@@ -70,7 +70,7 @@ block display
 //-             legend Log In
 //-             input(type='hidden' name='_csrf' value=csrfToken)
 //-             input(type='text', name='email', placeholder='email')
-//-             input(type='password', name='password', placeholder='password')
+//-             input(type='password', name='password',         placeholder='password')
 //-             div(class='login-register-buttons')
 //-                 button(type='submit', class='login') Login
 //-         form(action='/demo', class='demo-button', method='post')

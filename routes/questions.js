@@ -53,6 +53,8 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
         include: [User]
     });
 
+    console.log(question);
+
     // initializes 'isLoggedIn' with a boolean depending
     // on the state of 'req.session.auth'
     const isLoggedIn = Boolean(req.session.auth);
