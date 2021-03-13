@@ -71,7 +71,9 @@
 
 .asked h2 {
     padding-left: 25px;
-    color: white;  
+
+    color: white;
+
 }
 .question-body-content form {
     display: flex;
