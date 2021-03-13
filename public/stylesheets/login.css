@@ -2,8 +2,6 @@ body {
     display: grid;
     background-color: #2e363e;
 
-}
-
 /* the container for login inputs */
 #login-box {
     display: flex;
@@ -191,4 +189,3 @@ div.login-signup-link > p > a:hover {
 } */
 
 /* PLEASE DO NOT TOUCH RULES ABOVE -------------------------------------------------------------------- */
-
