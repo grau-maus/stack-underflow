@@ -1,14 +1,8 @@
 //- ./views/questions.pug
-
 //- if they arent authenticated user then we'll render page w/o voting or answering, otherwise everything
-
 extends index
-//- include utils.pug
 
 block display
-   //- +validationErrorSummary(errors)
-   //- div(class='question-header')
-   //-    p Top Uber Questions
    div(class='full-container')
       div(class='main-header'): p Top Uber Questions
       div(class='main-container')
@@ -25,24 +19,3 @@ block display
                      p #{question.title}
                   div(class='user-name')
                      p asked by #{question.User.username}
-                     //- p #{user.createdAt}
-
-
-
-
-
-
-
-
-   //- div(class='question-header') this is a question
-   //-  h2(class='question-header-title'): em for #{title}
-   //-  a(href='/questions/form')
-   //-   div Ask A Question
-   //- div(class='right-side-bar'): p Index of Questions
-   //-    ul
-   //-       each question in questions
-   //-          a(href=`/questions/${question.id}`)
-   //-             div(class="single-question-body-container")
-   //-                li #{question.title}
-   //-                   div(class='question-body')
-   //-                   div Asked: #{question.updatedAt}

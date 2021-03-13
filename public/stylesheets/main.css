@@ -1,18 +1,19 @@
-
 .full-container {
     background-color: #323535;
     flex: display;
     flex-direction: column;
 }
+
 .main-header p {
     color: white;
     font-size: 25px;
     margin: 15px;
-
 }
+
 .ask-question-div a {
     width: 20px;
 }
+
 .ask-question-button {
     background-color: orange;
     margin-left: 20px;
@@ -22,12 +23,14 @@
     height: 30px;
     margin-left: 15px;
 }
+
 .main-container {
     grid-area: 2 / 2 / 3 / 4;
     display: flex;
     flex-direction: column;
     color: white;
 }
+
 .main-container a {
     text-decoration: none;
 }
@@ -39,6 +42,7 @@
     margin: 5px;
     justify-content:left;
 }
+
 .counter-container {
     display: flex;
     flex-direction: row;
@@ -52,6 +56,7 @@
     order: 1;
     padding: 10px;
 }
+
 .number-of-answers {
     order: 2;
     padding: 15px;
@@ -64,7 +69,6 @@
     order: 2;
     margin-right: 10px;
     padding: 15px;
-
 }
 
 .user-name {
