@@ -5,18 +5,19 @@ div#signup-box.signup-form {
     display: flex;
     grid-column-start: 3;
     grid-column-end:four;
-    grid-row-start: row1-end;
-    grid-row-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
     /* justify-content: center; */
-    align-items: right;
+    /* align-items: left; */
     box-sizing: border-box;
     border: 1px solid #f95738;
     width: 40%;
+    height: 50%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display:inline-block;
     background-color: #293646;
-    margin-left: 140px;
+    margin-left: 50px;
     margin-top: 86px;
     justify-self: end;
     color: #eff1f3;
@@ -72,15 +73,16 @@ div.login-msg {
 /* talking snark */
 div.snark-box {
     display: flex;
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-column-end: three;
-    grid-row-start: row1-end;
-    grid-row-end: 2;
-    /* justify-content: center; */
+    grid-row-start: 2;
+    grid-row-end: 3;
+    justify-self: left;
     align-items: center;
     box-sizing: border-box;
     border: 1px solid #f95738;
-    width: 70%;
+    width: 65%;
+    height: 50%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display:inline-block;
@@ -93,6 +95,6 @@ div.snark-box {
 
 div.snark-div{
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-left: 100px;
 }
