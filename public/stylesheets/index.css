@@ -16,26 +16,27 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-around;
     color: #EFF1F3;
-    justify-self: stretch;
+    max-width: 1920px;
 }
 
-/* DIV CONTAINING TITLE & WELCOME TEXT */
+/* DIV CONTAINING WELCOME TEXT */
 div.navbar-welcome-title {
+    margin-top: 40px;
     order: 2;
 }
 
-/* HIDE WELCOME TEXT */
+/* HIDE IMG TAG */
 @media (max-width: 1225px) {
-    p.navbar-header {
+    img.navbar-logo {
         display: none;
     }
 }
 
-/* HIDE IMAGE TAG */
-@media (max-width: 845px) {
-    img.navbar-logo {
+/* HIDE P TAG */
+@media (max-width: 992px) {
+    p.navbar-header {
         display: none;
     }
 
@@ -48,7 +49,7 @@ div.navbar-welcome-title {
 p.navbar-header {
     font-family: system-ui;
     font-weight: 600;
-    font-size: 28px;
+    font-size: 40px;
     margin: 0px;
     margin-bottom: 10px;
 }
@@ -58,20 +59,18 @@ div.navbar-logo {
     order: 1;
     display: flex;
     justify-content: center;
-    max-width: 386px;
-    max-height: 97px;
 }
 
 /* LOGO IMAGE */
 img.navbar-logo {
     object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    padding-bottom: 20px;
+    max-width: 220px;
+    max-height: 220px;
 }
 
 /* SEARCH BAR CONTAINER */
 form.search-bar-container{
+    margin-top: 20px;
     width: 370px;
     display: flex;
     flex-direction: row;
@@ -122,6 +121,7 @@ div > div > a > button.login-signup-button {
 
 /* LOGIN & REGISTER BUTTON CONTAINER */
 div.login-register-buttons-container {
+    margin-top: 10px;
     order: 4;
 }
 
@@ -154,10 +154,6 @@ div.left-side-bar {
 /* LEFT SIDEBAR ANCHOR TAGS */
 a.left-side-bar-anchor {
     text-decoration: none;
-/*     margin-left: 160px; */
-/*     margin-top: 5px; */
-/*     margin-bottom: 5px; */
-/*     margin-right: 40px; */
 }
 
 /* LEFT SIDEBAR TEXT */
@@ -166,7 +162,7 @@ div.left-side-bar-text {
     font-weight: 400;
     color: #EFF1F3;
     margin-left: 20px;
-    margin-top: auto;
+    margin-top: 30px;
 }
 
 
@@ -181,11 +177,54 @@ div.left-side-bar-text:hover {
 
 
 
-/* FOOTER CONTAINER */
+/* FOOTER CONTAINER CONTAINING THE ACTUAL FOOTER CONTAINER. DON'T ASK */
 div.footer {
-    height: 100px;
     z-index: 1;
     grid-area: 3 / 1 / 4 / 4;
     background-color: #2E363E;
     box-shadow: 0px -2px 3px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* FOOTER CONTAINER */
+div.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: system-ui;
+    color: #EFF1F3;
+    width: auto;
+    height: 150px;
+}
+
+/* FOOTER CONTACT INFO CONTAINER */
+div.footer-contact-info {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* FOOTER CONTACT INFO A TAGS */
+div.footer-contact-info > a {
+    text-decoration: none;
+    padding: 5px;
+    margin-left: 12px;
+}
+
+/* DIV APP ACADEMY FOOTER CONTAINER */
+div.footer-appacademy {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+/* FOOTER APP ACADEMY A TAG */
+div.footer-appacademy > a {
+    text-decoration: none;
+}
+
+/* HOVERING OVER LINKS IN FOOTER */
+div.footer-contact-info > a:hover, div.footer-appacademy > a:hover {
+    color: #8D949D;
 }
