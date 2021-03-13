@@ -35,7 +35,7 @@ block display
          else if(questions.Answers.length === 1)
             p(class='number-answers') #{question.Answers.length} Answer
          else
-            p(class='number-answers') There have been no answers submitted
+            p(class='number-answers') The necros have not answered this question.
          div(class='question-body-answers')
             for answer in question.Answers
                div(class='each-answer')
@@ -44,7 +44,7 @@ block display
                      if(isLoggedIn)
                         button(type='submit', class='question-body-answers-content', id='upvote') ⇧
                   div(class='answer'): p #{answer.content}
-      div(class='right-side-bar-container'): p Dark Underflow Questions
+      div(class='right-side-bar-container'): p Underflow Questions
          ul
             each question in allQuestions
                a(href=`/questions/${question.id}`)

@@ -37,7 +37,7 @@
 
 /* this is the question body CONTAINER */
 .title {
-    /* margin-top: 30px; */
+    margin-top: 30px;
     color: white;
     padding-left: 20px;
 }
@@ -71,7 +71,7 @@
 
 .asked h2 {
     padding-left: 25px;
-    color: white;  
+    color: white;
 }
 .question-body-content form {
     display: flex;
@@ -101,6 +101,7 @@
 .question-body-answer-form textarea {
     order: 2;
     height: 170px;
+    width: 700px;
 }
 .question-body-answer-form button {
     padding-bottom: 10px;
@@ -129,6 +130,7 @@
 }
 .number-answers {
     color: white;
+    font-size: 20px;
     order: 4;
     margin-left: 25px;
     margin-top: 50px;
@@ -209,6 +211,15 @@
 }
 .right-side-bar-container a {
     text-decoration: none;
+}
+.right-side-bar-container p {
+    margin-top: 30px;
+
+
+}
+.listed-question-body{
+    margin-right: 40px;
+    color: #1182D7;
 }
 /* button {
     background-color: orange; */
