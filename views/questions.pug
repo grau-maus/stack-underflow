@@ -3,19 +3,20 @@
 extends index
 
 block display
-   div(class='full-container')
+   div(class='main-full-container')
       div(class='main-header'): p Top Uber Questions
       div(class='main-container')
          div(class='ask-question-div')
          a(href='/questions/form'): button(type='submit' class="ask-question-button") Ask a Good Question
-         each question in questions
-            a(href=`/questions/${question.id}`)
-               div(class='each-question-container')
-                  div(class='counter-container')
-                     div(class='number-of-votes') 3 votes
-                     div(class='number-of-answers')
-                        p #{question.Answers.length} answers
-                  div(class='question-text')
-                     p #{question.title}
-                  div(class='user-name')
-                     p asked by #{question.User.username}
+         div(class='main-page-questions')
+            each question in questions
+                  div(class='each-question-container')
+                     div(class='counter-container')
+                        div(class='number-of-votes') 3 votes
+                        div(class='number-of-answers')
+                           p #{question.Answers.length} answers
+                     a(href=`/questions/${question.id}`)
+                        div(class='question-text')
+                           p #{question.title}
+                     div(class='user-name')
+                        p asked by #{question.User.username}
