@@ -142,19 +142,18 @@ div.left-side-bar {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     height: 100vh;
     width: 181px;
     box-shadow: 1px 0px 4px black;
     grid-area: 2 / 1 / 4 / 1;
-    justify-self: stretch;
-    align-self: stretch;
     background-color: #2E363E;
 }
 
 /* LEFT SIDEBAR ANCHOR TAGS */
 a.left-side-bar-anchor {
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* LEFT SIDEBAR TEXT */
@@ -163,14 +162,21 @@ div.left-side-bar-text {
     font-family: system-ui;
     font-weight: 400;
     color: #CBCDCF;
-    margin-left: 20px;
-    margin-top: 30px;
+    padding: 15px;
+    width: 100%;
+    text-align: end;
+}
+
+/* LEFT SIDEBAR TEXT HOVER HIGHLIGHT */
+div.left-side-bar-text:hover {
+    background-color: #BFC3C6;
+    border-right: 5px solid #DF553D;
 }
 
 
 /* LEFT SIDEBAR TEXT HOVERING */
 div.left-side-bar-text:hover {
-    color: #8D949D;
+    color: #2E363E;
 }
 
 
@@ -194,31 +200,25 @@ div.footer {
 div.footer-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     font-family: system-ui;
     color: #CBCDCF;
-    width: auto;
-    height: 150px;
+    margin-top: 50px;
+    width: 1000px;
 }
 
 /* FOOTER CONTACT INFO CONTAINER */
 div.footer-contact-info {
-    margin-top: 5px;
+    font-weight: 600;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
 }
 
 /* FOOTER CONTACT INFO A TAGS */
 div.footer-contact-info > a {
     text-decoration: none;
-    padding: 5px;
-    margin-left: 12px;
-}
-
-/* DIV APP ACADEMY FOOTER CONTAINER */
-div.footer-appacademy {
-    margin-top: 50px;
-    margin-left: 50px;
 }
 
 /* FOOTER APP ACADEMY A TAG */

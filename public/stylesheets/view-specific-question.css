@@ -230,7 +230,6 @@ textarea.single-question-answer-input {
 }
 
 .single-question-right-bar-container p {
-    color: lightgray;
     margin: 20px;
     padding: 10px;
     font-size: 20px;
@@ -300,4 +299,39 @@ img.single-question-upvote {
 
 img.single-question-upvote:hover {
     background-color: #2F5675;
+}
+
+a.single-question-delete-a {
+    order: 3;
+    margin-top: 40px;
+}
+
+button.single-question-delete {
+    background-color: #293646;
+    font-weight: 600;
+    color: #DF553D;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+button.single-question-delete:hover {
+    background-color: #205c8b;
+}
+
+button.single-question-answer-delete {
+    font-weight: 600;
+    color: #293646;
+    border: 1px solid black;
+    background-color: #DF553D;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 5px black;
+}
+
+button.single-question-answer-delete:hover {
+    background-color: #E36B56;
 }
