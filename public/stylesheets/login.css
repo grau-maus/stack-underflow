@@ -137,7 +137,8 @@ div.signup-div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -56vh;
+    margin-top: -500px;
+    margin-left: 40px;
     position: absolute;
     color: red;
 }

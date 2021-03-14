@@ -1,42 +1,67 @@
-/* please do not write any rules for the html body */
+.signup-container-container {
+    grid-area: 2 / 2 / 3 / 4;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    font-family: system-ui;
+}
 
 /* the signup form */
 div#signup-box.signup-form {
+    margin-left: 2vw;
+    margin-top: 15vh;
+    width: 500px;
+    height: 500px;
     display: flex;
-    grid-column-start: 3;
-    grid-column-end:four;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    /* justify-content: center; */
-    /* align-items: left; */
-    box-sizing: border-box;
+    justify-content: center;
     border: 1px solid #f95738;
-    width: 40%;
-    height: 75%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display:inline-block;
     background-color: #293646;
-    margin-left: 50px;
-    margin-top: 86px;
-    justify-self: end;
-    color: #eff1f3;
-    font-family : Arial,
-    Helvetica,
-    sans-serif;
+    box-shadow: 0px 0px 10px black;
+}
+
+.signup-container-contents {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 }
 
 /* the inputs */
 div.signup-inputs {
     color: #eff1f3;
-    padding: 6px;
+    padding: 7px;
+    font-size: 1rem;
+}
+
+#display-name > input,
+#signup-email > input,
+#signup-password > input,
+#signup-usempapa > input {
+    width: 200px;
+    height: 30px;
+    box-shadow: 0px 0px 1px black;
 }
 
 /* the signup button */
 div.signup-btn-div {
-    display:flex;
-    margin-left: 50px;
+    margin-left: 2.9vw;
+    margin-top: 0.5vh;
 }
+
+button.signup-btn-form {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #eff1f3;
+    font-weight: 500;
+    background-color: #1182d7;
+    box-shadow: 0px 0px 5px black;
+}
+
+button.signup-btn-form:hover {
+    background-color: #205C8B;
+}
+
 div.signup-btn-form {
     background-color: #1182d7;
     align-content: center;
@@ -44,58 +69,85 @@ div.signup-btn-form {
 
 /* the login */
 div.login-div {
-    display: flex;
-    grid-column-start: 2;
-    grid-column-end: three;
-    grid-row-start: 3;
-    grid-row-end: 5;
-    width: 15%;
-    display : flex;
-    padding-left: 6px;
-    justify-content: left;
-    margin-left: 500px;
+    margin-left: 4vw;
     color: #eff1f3;
     font-size: 7px;
 }
+
+.login-div-a-tag {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    font-weight: 600;
+}
+
+.login-div-a-tag:hover {
+    color: #8C949D;
+}
+
 div.login-msg {
+    margin-top: 4vh;
+    margin-left: 0.5vw;
     display: flex;
-    grid-column-start: 1;
-    grid-column-end: two;
-    grid-row-start: 3;
-    grid-row-end: 5;
-    width: 15%;
-    display : flex;
-    justify-content: left;
-    margin-left: 500px;
-    color: #eff1f3;
+    color: #88C1EB;
     font-size: xx-small;
 }
 
 /* talking snark */
 div.snark-box {
     display: flex;
-    grid-column-start: 2;
-    grid-column-end: three;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    justify-self: left;
+    width: 1000px;
+    height: 500px;
+    margin-top: 15vh;
+    margin-left: 2vw;
     align-items: center;
-    box-sizing: border-box;
+    justify-content: center;
     border: 1px solid #f95738;
-    width: 65%;
-    height: 75%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display:inline-block;
     background-color: #293646;
-    margin-left: 125px;
-    margin-top: 86px;
     color: #eff1f3;
-
+    box-shadow: 0px 0px 10px black;
 }
 
-div.snark-div{
-    justify-content: center;
-    margin-top: 100px;
-    margin-left: 100px;
+.snark-div-header {
+    margin-left: -1vw;
+    padding-bottom: 11px;
+    text-decoration: underline;
+    color: #88C1EB;
+}
+
+.snark-div-header-ul-li {
+    padding: 10px;
+}
+
+.signup-container-contents > .alert {
+    display: flex;
+    z-index: 3;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -700px;
+    margin-left: 200px;
+    position: absolute;
+    color: red;
+    background-color: #293646;
+    border: 1px solid #f95738;
+    width: 800px;
+    box-shadow: 0px 0px 10px black;
+    animation: hide 4s forwards;
+}
+
+/* THIS HIDES THE ALERT AFTER THE TIME SPECIFIED ABOVE */
+@keyframes hide {
+    0% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.signup-container-contents > .alert > p {
+    margin: 0px;
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+.signup-container-contents > .alert > ul > li {
+    margin-left: 2vw;
 }
