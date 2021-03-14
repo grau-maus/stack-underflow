@@ -7,7 +7,8 @@
     font-family: system-ui;
     align-items: center;
     width: 100%;
-    margin-left: 220px;
+    margin-left: 8vw;
+    min-height: 100vh;
 }
 
 /* TITLE */
@@ -45,7 +46,7 @@
     font-weight: bold;
     margin-left: 20px;
     border-radius: 10px;
-    color: 2E363E;
+    color: #2E363E;
     width: 190px;
     height: 30px;
     margin-left: 15px;
@@ -104,7 +105,7 @@ div.number-of-answers > p {
 }
 
 .user-name {
-    color: #C8D7E2;
+    color: #88C1EB;
     display: block;
     max-height: 83px;
     order: 3;

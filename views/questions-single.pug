@@ -1,56 +1,60 @@
 extends index
 include utils.pug
-//- head
-//-    block head
-//-       link(rel="stylesheet", href="/stylesheets/view-specific-question.css")
-//-body
+
 block display
    +validationErrorSummary(errors)
-   //- div(class='left-side-bar')
-   //-  a(href='/')
-   //-    div Homepage
-   //-  a(href='http://github.com')
-   //-    div Find the underverse
    div(class='full-container')
       div(class='question-body-container')
-         //- div(class='title')
-         h1(class="title")= title
-         div(class='asked')
-            h2 Asked: #{question.updatedAt}
+         div(class='single-question-header-container')
+            h1(class="title")= title
+            div(class='asked')
+               h2(class='single-question-created') Asked: #{question.updatedAt}
+               h2(class='single-question-user') User: #{question.User.username}
          div(class='question-body-content')
-            form(action=`/questions/${question.id}/downvote`, method='post')
+            form(action=`/questions/${question.id}/downvote`, method='post', class='single-question-downvote-container')
+               if(question.Votes.length === 0)
+                  div(class='single-question-downvote-count-0') #{question.Votes.length}
+               else
+                  div(class='single-question-downvote-count') - #{question.Votes.length}
                input(type='hidden', name='_csrf', value=csrfToken)
                if(isLoggedIn)
-                  button(type='submit', class='question-body-content-downvote', id='downvote') ⇩
-            div: p #{question.content}
+                  button(type='submit', class='question-body-content-downvote', id='downvote')
+                     img(class='single-question-downvote', src='/images/downvote.png')
+            div
+               p #{question.content}
          div(class='question-body-answer-form')
             form(action=`/questions/${question.id}/answers`, method=`post`)
                input(type='hidden', name='_csrf', value=csrfToken)
                if(isLoggedIn)
-                  label(for='answerContent') Your Answer
-                  textarea(name='answerContent', value=question.content)
+                  label(for='answerContent') Your Answer:
+                  textarea(name='answerContent', class='single-question-answer-input')
                   button(type='submit') Post Your Answer
-         if(question.Answers.length > 1)
-            p(class='number-answers') #{question.Answers.length} Answers
-         else if(question.Answers.length === 1)
-            p(class='number-answers') #{question.Answers.length} Answer
-         else
-            p(class='number-answers') The necros have not answered this question.
-         div(class='question-body-answers')
-            for answer in question.Answers
-               div(class='each-answer')
-                  form(action=`/questions/${question.id}/answer/${answer.id}`, method="post")
-                     input(type='hidden', name='_csrf', value=csrfToken)
-                     if(isLoggedIn)
-                        button(type='submit', class='question-body-answers-content', id='upvote') ⇧
-                  div(class='answer'): p #{answer.content}
-      div(class='right-side-bar-container'): p Underflow Questions
-         ul
+         div(class='single-question-answers-container')
+            if(question.Answers.length > 1)
+               p(class='number-answers') #{question.Answers.length} Answers:
+            else if(question.Answers.length === 1)
+               p(class='number-answers') #{question.Answers.length} Answer:
+            else
+               p(class='number-answers') The necros have not answered this question.
+            div(class='question-body-answers')
+               for answer in allAnswers
+                  div(class='each-answer')
+                     form(action=`/questions/${question.id}/answer/${answer.id}`, method='post', class='single-answer-vote-form')
+                        if(answer.Votes.length === 0)
+                           div(class='single-question-upvote-count-0') #{answer.Votes.length}
+                        else
+                           div(class='single-question-upvote-count') + #{answer.Votes.length}
+                        input(type='hidden', name='_csrf', value=csrfToken)
+                        if(isLoggedIn)
+                           button(type='submit', class='question-body-answers-content', id='upvote')
+                              img(class='single-question-upvote', src='/images/upvote.png')
+                     div(class='answer')
+                        p(class='single-question-answer-content') #{answer.content}
+                        p(class='single-question-answer-date') Answered: #{answer.createdAt}
+                        p(class='single-question-answer-username') #{answer.User.username}
+      div(class='single-question-right-bar-container')
+         div(class='right-side-bar-title') Underflow Questions
+         div(class='right-side-bar-content')
             each question in allQuestions
-               a(href=`/questions/${question.id}`)
-                  div(class="listed-question-body")
-                     li #{question.title}
-
-
-                        //- div(class='question-body')
-                        //- div Asked: #{question.updatedAt}
+               div(class="listed-question-body")
+                  a(href=`/questions/${question.id}`, class='right-side-bar-a-tag') #{question.title}

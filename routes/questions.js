@@ -37,7 +37,8 @@ router.post('/questions', csrfProtection, asyncHandler(async (req, res) => {
             title: {
                 [Op.iLike]: `%${query}%`   // 'Op' NEEDS TO BE IMPORTED IN ORDER FOR THIS QUERY TO WORK
             }                               // see above at imports
-        }
+        },
+        include: [User, Answer, Vote]
     });
 
     res.render('questions', {
@@ -58,8 +59,10 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
     const allQuestions = await Question.findAll({
         include: User
     });
-
-    console.log(question);
+    const allAnswers = await Answer.findAll({
+        where: { questionId: question.id },
+        include: [User, Vote]
+    });
 
     // initializes 'isLoggedIn' with a boolean depending
     // on the state of 'req.session.auth'
@@ -68,8 +71,9 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
     res.render('questions-single', {
         title: question.title,
         question,
-        isLoggedIn,
         allQuestions,
+        allAnswers,
+        isLoggedIn,
         csrfToken: req.csrfToken()
     });
 }));
@@ -109,6 +113,10 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
         const allQuestions = await Question.findAll({
             include: User
         });
+        const allAnswers = await Answer.findAll({
+            where: { questionId: question.id },
+            include: [User, Vote]
+        });
 
         // initializes 'isLoggedIn' with a boolean depending
         // on the state of 'req.session.auth'
@@ -119,6 +127,7 @@ router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asy
             question,
             errors,
             allQuestions,
+            allAnswers,
             isLoggedIn,
             csrfToken: req.csrfToken()
         });
