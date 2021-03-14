@@ -2,7 +2,8 @@ extends index
 include utils.pug
 
 block display
-   +validationErrorSummary(errors)
+   div(class='alert-errors')
+      +validationErrorSummary(errors)
    div(class='full-container')
       div(class='question-body-container')
          div(class='single-question-header-container')
@@ -22,6 +23,9 @@ block display
                      img(class='single-question-downvote', src='/images/downvote.png')
             div
                p #{question.content}
+            if(authUser)
+               a(href=`/questions/${question.id}/delete`, class='single-question-delete-a')
+                  button(class='single-question-delete') Oops, Delete!
          div(class='question-body-answer-form')
             form(action=`/questions/${question.id}/answers`, method=`post`)
                input(type='hidden', name='_csrf', value=csrfToken)
@@ -38,20 +42,22 @@ block display
                p(class='number-answers') The necros have not answered this question.
             div(class='question-body-answers')
                for answer in allAnswers
-                  div(class='each-answer')
-                     form(action=`/questions/${question.id}/answer/${answer.id}`, method='post', class='single-answer-vote-form')
+                  div(class='each-answer', id=`userId-${answer.id}`)
+                     div(class='single-answer-vote-form')
                         if(answer.Votes.length === 0)
-                           div(class='single-question-upvote-count-0') #{answer.Votes.length}
+                           div(class=`single-question-upvote-count answerId-${answer.id}`) #{answer.Votes.length}
                         else
-                           div(class='single-question-upvote-count') + #{answer.Votes.length}
+                           div(class=`single-question-upvote-count answerId-${answer.id}`) + #{answer.Votes.length}
                         input(type='hidden', name='_csrf', value=csrfToken)
                         if(isLoggedIn)
-                           button(type='submit', class='question-body-answers-content', id='upvote')
-                              img(class='single-question-upvote', src='/images/upvote.png')
+                           button(class='question-body-answers-content')
+                              img(class=`single-question-upvote ${question.id}:${answer.id}`, src='/images/upvote.png')
                      div(class='answer')
                         p(class='single-question-answer-content') #{answer.content}
                         p(class='single-question-answer-date') Answered: #{answer.createdAt}
-                        p(class='single-question-answer-username') #{answer.User.username}
+                        p(class='single-question-answer-username') By: #{answer.User.username}
+                        if(userId === answer.userId)
+                           button(class='single-question-answer-delete', value=answer.id) delete
       div(class='single-question-right-bar-container')
          div(class='right-side-bar-title') Underflow Questions
          div(class='right-side-bar-content')

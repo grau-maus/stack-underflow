@@ -16,12 +16,6 @@ router.get('/questions', csrfProtection, asyncHandler(async (req, res) => {
         include: [User, Answer, Vote]
     });
 
-    // const answers = await Answer.findAll({
-    //     where: {
-    //         questionId,
-    //     }
-    // })
-
     res.render('questions', {
         title: 'Questions',
         questions,
@@ -52,6 +46,7 @@ router.post('/questions', csrfProtection, asyncHandler(async (req, res) => {
 // POSTS TO '/questions/:id/answers'
 router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
+    const userId = req.session.auth.userId;
     const question = await Question.findByPk(questionId, {
         include: [User, Answer, Vote]
     });
@@ -68,12 +63,17 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
     // on the state of 'req.session.auth'
     const isLoggedIn = Boolean(req.session.auth);
 
+    // check to see if user is authorized to delete specific question
+    const authUser = Boolean(req.session.auth.userId === question.User.id);
+
     res.render('questions-single', {
         title: question.title,
         question,
         allQuestions,
         allAnswers,
         isLoggedIn,
+        userId,
+        authUser,
         csrfToken: req.csrfToken()
     });
 }));
@@ -221,7 +221,6 @@ router.post('/questions/:id/downvote', csrfProtection, asyncHandler(async (req, 
 
 // ROUTE FOR UPVOTING ANSWERS
 router.post('/questions/:questionId/answer/:answerId', csrfProtection, asyncHandler(async (req, res) => {
-    const questionId = req.params.questionId;
     const answerId = req.params.answerId;
     const userId = req.session.auth.userId;
     const vote = await Vote.findOne({ where: [{ answerId }, { userId }] });
@@ -237,9 +236,37 @@ router.post('/questions/:questionId/answer/:answerId', csrfProtection, asyncHand
         await vote.destroy();
     }
 
-    // redirect user to the specific question because
-    // the current url is: '/questions/:questionId/answer/:answerId'
-    res.redirect(`/questions/${questionId}`);
+    const votes = await Vote.findAll({ where: { answerId } });
+
+    res.json({ votes });
+}));
+
+
+// ROUTE FOR DELETING A QUESTION
+router.get('/questions/:id/delete', csrfProtection, asyncHandler(async (req, res) => {
+    const question = await Question.findByPk(req.params.id);
+
+    // conditional just in case user decides to type in the url manually ;)
+    if (req.session.auth.userId === question.userId) {
+        await question.destroy();
+        res.redirect('/');
+    } else {
+        // manually redirect to a non-existant page for a 404
+        res.sendStatus(404);
+    }
+}));
+
+
+// ROUTE FOR DELETING AN ANSWER
+router.delete('/questions/answers/:answerId/delete', csrfProtection, asyncHandler(async (req, res) => {
+    const answerId = req.params.answerId;
+    const currentUserId = req.session.auth.userId;
+    const answer = await Answer.findByPk(answerId);
+
+    if (currentUserId === answer.userId) {
+        await answer.destroy();
+        res.json({ answerId });
+    }
 }));
 
 module.exports = router;
