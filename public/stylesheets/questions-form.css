@@ -1,4 +1,4 @@
-/* 
+/*
 body {
     background-color:#2E363E;
     color: #EFF1F3;
@@ -69,14 +69,14 @@ div.question-body-form {
 }
 
 
-textarea {
+/* textarea {
     width: 100%;
     height: 100px;
-}
+} */
 
-input {
+/* input {
     width: 93%;
-}
+} */
 
 .right-side-bar_form {
     text-align: left;
@@ -124,7 +124,7 @@ li {
 
 .side-bar-body{
     order: 2;
-} */
+}
 
 
 p {
