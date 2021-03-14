@@ -11,7 +11,7 @@ const deleteAnswer = async (event) => {
   if (event.target.classList[0] !== 'single-question-answer-delete') return;
 
   // CODE FOR HEROKU
-  const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/answers/${event.target.id}`, {
+  const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/answers/${event.target.id}/delete`, {
     method: 'DELETE',
     headers: {
       'X-CSRF-TOKEN': csrfToken
