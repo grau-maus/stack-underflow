@@ -17,7 +17,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    color: #EFF1F3;
+    color: #88C1EB;
     max-width: 1920px;
 }
 
@@ -162,7 +162,7 @@ div.left-side-bar-text {
     font-size: 16px;
     font-family: system-ui;
     font-weight: 400;
-    color: #EFF1F3;
+    color: #CBCDCF;
     margin-left: 20px;
     margin-top: 30px;
 }
@@ -196,7 +196,7 @@ div.footer-container {
     flex-direction: row;
     justify-content: center;
     font-family: system-ui;
-    color: #EFF1F3;
+    color: #CBCDCF;
     width: auto;
     height: 150px;
 }

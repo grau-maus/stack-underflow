@@ -5,31 +5,31 @@ include utils.pug
 
 block display
     div(id='login-box' class='login-inputs')
-        +validationErrorSummary(errors)
         form(action='/login', class='inputs-container', method='post')
+            +validationErrorSummary(errors)
+            div(class='login-inputs-container')
+                div(class='email-input-div')
+                    legend  Email
+                    input(class='inputs' type='text', name='email',   placeholder='email')
 
-            div(class='email-input-div')
-                legend  Email
-                input(class='inputs' type='text', name='email',   placeholder='email')
-
-            div(class='passwd-input-div')
-                legend  Password
-                input(class='inputs' type='password' name='password',  placeholder='password')
+                div(class='passwd-input-div')
+                    legend  Password
+                    input(class='inputs' type='password' name='password',  placeholder='password')
 
             div(class='login-btn-div')
                 input(type='hidden' name='_csrf' value=csrfToken)
-                button(type='submit',  class='login-btn') Login      
+                button(type='submit',  class='login-btn') Login
 
         div(class='demo-login')
         form(action='/demo', class='demo-button', method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
-            button(type='submit', class= 'login-register-demo') Demo Login
+            button(type='submit', class='login-register-demo') Demo Login
+        div(class='signup-container')
+            div(class='signup-msg')
+                p(class='signup-text') Not in the Underflow?
 
-        div(class='signup-msg')
-            p Not in the Underflow?
-
-        div(class='signup-div')
-            p: a(href="/signup") Sign up
+            div(class='signup-div')
+                a(href="/signup", class='signup-div-a-tag') Sign up
 
 
 

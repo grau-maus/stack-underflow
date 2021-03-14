@@ -12,7 +12,10 @@ block display
             each question in questions
                   div(class='each-question-container')
                      div(class='counter-container')
-                        div(class='number-of-votes') 3 votes
+                        if(question.Votes.length === 0)
+                           div(class='number-of-votes') #{question.Votes.length}
+                        else
+                           div(class='number-of-votes') - #{question.Votes.length}
                         div(class='number-of-answers')
                            p #{question.Answers.length} answers
                      a(href=`/questions/${question.id}`)
