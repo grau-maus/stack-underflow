@@ -4,57 +4,36 @@ extends index
 
 include utils
 
-//- head
-//-     block head
-//-         link(rel='stylesheet' href='/stylesheets/questions-form.css')
-
-
-//- block display
-    //- div(class='header') Header
-    //-     h2 Stack Underflow
-    //-     input(type="text", placeholder="Search")
-    //- p
-
 block display
     div(class="question-form-container")
 
         div(class="question-form-body")
             div(class="question-form-body-container")
-                div(class="question-body-form")
-                    +validationErrorSummary(errors)
-                    form.pure-form(action="/questions/form", method="post", class="question-form-container")
-                        fieldset
-                            input(type="hidden" name="_csrf" value=csrfToken)
-                            div(class="ask")
-                                h1 Ask the Underflow!
-                            div(class="warning")
-                                h3 WARNING! : Your question may suck you under the flow
-                            div(class="question-form-title")
-                                h3 Title
-                                p Be specfic and imagine you are asking a question to another person
-                                input(name="questionTitle", type=text, placeholder="Title your ? here")
-                            p
-                            div(class="question-form-body")
-                                h4 Body
-                                p Include all the information someone would need to answer your question
-                                textarea(name="content", type=text, placeholder="Ask your question here")
-                            p
-                            div(class="button")
-                                button(class="submit-question-button", type="submit") Submit
-                    //- if(errors)
-                    //-     each error in errors
-                    //-         h5= error
+                +validationErrorSummary(errors)
+                form(action="/questions/form", method="post", class="question-form-container-form")
+                    div(class="question-body-form")
+                        input(type="hidden" name="_csrf" value=csrfToken)
+                        div(class="ask")
+                            h1(class='ask-header header-1') Ask the Underflow!
+                        div(class="warning")
+                            h3(class='ask-header header-3') WARNING: Your question may suck you under the flow!
+                        div(class="question-form-title")
+                            h3(class='ask-header header-3') Title
+                            p(class='ask-p-tag') Be specfic and imagine you are asking a question to another person
+                            input(class='question-form-title', name="questionTitle", type='text', placeholder="Title your ? here")
+                        div(class="question-form-body")
+                            h4(class='ask-header header-4') Body
+                            p(class='ask-p-tag') Include all the information someone would need to answer your question
+                            textarea(name="content", placeholder="Ask your question here")
+                        div(class="button")
+                            button(class="submit-question-button", type="submit") Submit
 
-        div(class="question-form-right-side-bar")      
-            h4(class="draft") Step 1 Draft your question
-            p The community is here to help you with specific coding, algorithm, or language problems.
-            p Avoid asking opinion-based questions.
-            ul(class="draft")
-                li 1. Dont ask dumb questions
-                li 2. There are no dumb questions
-                li 3. Don't be nebulous 
-
-        
-
-
-
+        div(class="question-form-right-side-bar")
+            div(class='question-form-right-side-bar-container')
+                h4(class="draft") Step 1: Draft your question.
+                p(class='question-form-p-tag') The community is here to help you with specific coding, algorithm, or language problems.
+                p(class='question-form-p-tag') Avoid asking opinion-based questions!
+                ul(class="draft-ul")
+                    li(class='question-form-li') 1. Dont ask dumb questions
+                    li(class='question-form-li') 2. There are no dumb questions
+                    li(class='question-form-li') 3. Don't be nebulous
