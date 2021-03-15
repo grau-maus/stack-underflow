@@ -27,12 +27,12 @@ block display
                a(href=`/questions/${question.id}/delete`, class='single-question-delete-a')
                   button(class='single-question-delete') Oops, Delete!
          div(class='question-body-answer-form')
-            form(action=`/questions/${question.id}/answers`, method=`post`)
+            div
                input(type='hidden', name='_csrf', value=csrfToken)
                if(isLoggedIn)
                   label(for='answerContent') Your Answer:
-                  textarea(name='answerContent', class='single-question-answer-input')
-                  button(type='submit') Post Your Answer
+                  textarea(name='answerContent', class=`single-question-answer-input ${question.id}`)
+                  button(type='submit', id='post-answer') Post Your Answer
          div(class='single-question-answers-container')
             if(question.Answers.length > 1)
                p(class='number-answers') #{question.Answers.length} Answers:

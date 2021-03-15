@@ -125,12 +125,16 @@ div.single-question-downvote-count {
     font-size: 1.1rem;
     font-weight: 500;
     margin-right: 3px;
+    width: 30px;
+    text-align: center;
 }
 
 div.single-question-downvote-count-0 {
     font-size: 1.1rem;
     font-weight: 500;
     margin-right: -1px;
+    width: 30px;
+    text-align: center;
 }
 
 .question-body-content div p {
@@ -140,7 +144,7 @@ div.single-question-downvote-count-0 {
 }
 
 
-.question-body-answer-form form {
+.question-body-answer-form div {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
@@ -203,6 +207,8 @@ textarea.single-question-answer-input {
     margin: 0px;
     font-size: 1.1rem;
     font-weight: bold;
+    width: 30px;
+    text-align: center;
 }
 
 .single-question-upvote-count-0 {
@@ -211,6 +217,8 @@ textarea.single-question-answer-input {
     font-size: 1.1rem;
     font-weight: bold;
     margin-left: 1.6px;
+    width: 30px;
+    text-align: center;
 }
 
 .each-answer {
@@ -235,7 +243,7 @@ textarea.single-question-answer-input {
     font-size: 20px;
 }
 
-.question-body-content form {
+.question-body-content div {
     order: 1;
 }
 
