@@ -1,17 +1,13 @@
 const csrfToken = document.querySelector('[name="_csrf"]').value;
 
-
-
-
-
-
-
 // DELETE ANSWER FUNCTION
-const deleteAnswer = async (event) => {
+async function deleteAnswer(event) {
   if (event.target.classList[0] !== 'single-question-answer-delete') return;
 
+  const ansId = parseInt(event.target.value);
+
   // CODE FOR HEROKU
-  const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/answers/${event.target.value}/delete`, {
+  const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/answers/${ansId}/delete`, {
     method: 'DELETE',
     headers: {
       'X-CSRF-TOKEN': csrfToken
@@ -19,7 +15,7 @@ const deleteAnswer = async (event) => {
   });
 
   // // CODE FOR TESTING
-  // const res = await fetch(`http://localhost:8080/questions/answers/${event.target.value}/delete`, {
+  // const res = await fetch(`http://localhost:8080/questions/answers/${ansId}/delete`, {
   //   method: 'DELETE',
   //   headers: {
   //     'X-CSRF-TOKEN': csrfToken
@@ -43,9 +39,101 @@ const deleteAnswer = async (event) => {
   }
 
   document.querySelector('.number-answers').innerHTML = countLabel;
-};
+}
 
 
+
+async function addComment(event) {
+  if (event.target.id === 'post-answer') {
+    const textContent = document.querySelector('.single-question-answer-input');
+    let questionId = Number(textContent.classList[1]);
+
+    // CODE FOR HEROKU
+    const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/${questionId}/answers`, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-TOKEN': csrfToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ answerContent: textContent.value })
+    });
+
+    // // CODE FOR TESTING
+    // const res = await fetch(`/questions/${questionId}/answers`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'X-CSRF-TOKEN': csrfToken,
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ answerContent: textContent.value })
+    // });
+
+    let { newAnswer, author } = await res.json();
+
+    // create a new node with all its respective children as seen in
+    // the html tree. we could clone a node using '<< node >>.cloneNode(true / false)'
+    // but what if there are no answers to clone?
+    // DEEPEST NODE IN TREE <img>
+    const voteImg = document.createElement('img');
+    voteImg.classList.add('single-question-upvote', `${newAnswer.questionId}:${newAnswer.id}`);
+    voteImg.setAttribute('src', '/images/upvote.png');
+
+    const voteBtn = document.createElement('button');
+    voteBtn.classList.add('question-body-answers-content');
+    voteBtn.appendChild(voteImg);
+
+    const csrfInput = document.createElement('input');
+    csrfInput.setAttribute('type', 'hidden');
+    csrfInput.setAttribute('name', '_csrf');
+    csrfInput.setAttribute('value', `${csrfToken}`);
+
+    const voteCountDiv = document.createElement('div');
+    voteCountDiv.classList.add('single-question-upvote-count', `answerId-${newAnswer.id}`);
+    voteCountDiv.innerText = 0;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('single-question-answer-delete');
+    deleteBtn.setAttribute('value', `${newAnswer.id}`)
+    deleteBtn.innerText = 'delete';
+
+    const usernameP = document.createElement('p');
+    usernameP.classList.add('single-question-answer-username');
+    usernameP.innerText = `By: ${author.username}`;
+
+    const answerDateP = document.createElement('p');
+    answerDateP.classList.add('single-question-answer-date');
+    answerDateP.innerText = `Answered: ${newAnswer.createdAt}`;
+
+    const answerP = document.createElement('p');
+    answerP.classList.add('single-question-answer-content');
+    answerP.innerText = `${newAnswer.content}`;
+
+    const answerDiv = document.createElement('div');
+    answerDiv.classList.add('answer');
+    answerDiv.appendChild(answerP);
+    answerDiv.appendChild(answerDateP);
+    answerDiv.appendChild(usernameP);
+    answerDiv.appendChild(deleteBtn);
+
+    const divForm = document.createElement('div');
+    divForm.classList.add('single-answer-vote-form');
+    divForm.appendChild(voteCountDiv);
+    divForm.appendChild(csrfInput);
+    divForm.appendChild(voteBtn);
+
+    // PARENT <div>
+    const parentDiv = document.createElement('div');
+    parentDiv.classList.add('each-answer');
+    parentDiv.setAttribute('id', `userId-${newAnswer.id}`);
+    parentDiv.appendChild(divForm);
+    parentDiv.appendChild(answerDiv);
+
+    // finally attach the block of answer to the container
+    // containing all the answers
+    document.querySelector('.question-body-answers').appendChild(parentDiv);
+    deleteBtn.addEventListener('click', deleteAnswer);
+  }
+}
 
 
 
@@ -53,7 +141,7 @@ const deleteAnswer = async (event) => {
 
 
 // UPVOTE ANSWER FUNCTION
-const upvoteAnswer = async (event) => {
+async function upvoteAnswer(event) {
   if (event.target.classList[0] !== 'single-question-upvote') return;
 
   const classList = event.target.classList;
@@ -90,7 +178,10 @@ const upvoteAnswer = async (event) => {
   } else {
     document.querySelector(`.answerId-${answerId}`).innerText = `+ ${votes.length}`;
   }
-};
+}
+
+
+
 
 
 
@@ -137,3 +228,6 @@ document.querySelectorAll('.single-question-upvote').forEach(node => {
 document.querySelectorAll('.single-question-answer-delete').forEach(node => {
   node.addEventListener('click', deleteAnswer);
 });
+
+// POSTING AN ANSWER
+document.querySelector('#post-answer').addEventListener('click', addComment);

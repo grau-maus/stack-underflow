@@ -46,7 +46,7 @@ router.post('/questions', csrfProtection, asyncHandler(async (req, res) => {
 // POSTS TO '/questions/:id/answers'
 router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
-    const userId = req.session.auth.userId;
+    const userId = req.session.auth ? req.session.auth.userId : null;
     const question = await Question.findByPk(questionId, {
         include: [User, Answer, Vote]
     });
@@ -64,7 +64,7 @@ router.get('/questions/:id(\\d+)', csrfProtection, asyncHandler(async (req, res)
     const isLoggedIn = Boolean(req.session.auth);
 
     // check to see if user is authorized to delete specific question
-    const authUser = Boolean(req.session.auth.userId === question.User.id);
+    const authUser = Boolean(userId === question.User.id);
 
     res.render('questions-single', {
         title: question.title,
@@ -88,50 +88,55 @@ const answerValidator = [
 // REDIRECTS TO '/questions/:id'
 router.post('/questions/:id(\\d+)/answers', csrfProtection, answerValidator, asyncHandler(async (req, res) => {
     const questionId = parseInt(req.params.id, 10);
+    const userId = req.session.auth.userId;
     const {
         answerContent,
     } = req.body;
     const newAnswer = Answer.build({
         content: answerContent,
         userId: req.session.auth.userId,
-        questionId,
-        createdAt: new Date(),                  // <=== 'createdAt' & 'updatedAt' are unnecessary
-        updatedAt: new Date()                   // <=== sequelize already takes care of them
+        questionId
     });
+    const author = await User.findByPk(userId);
 
+    // do we still need this for AJAX calls?
     const validatorErrors = validationResult(req);
 
-    if (validatorErrors.isEmpty()) {
-        await newAnswer.save();
+    await newAnswer.save();
 
-        res.redirect(`/questions/${questionId}`);
-    } else {
-        const errors = validatorErrors.array().map((error) => error.msg);
-        const question = await Question.findByPk(questionId, {
-            include: [User, Answer, Vote]
-        });
-        const allQuestions = await Question.findAll({
-            include: User
-        });
-        const allAnswers = await Answer.findAll({
-            where: { questionId: question.id },
-            include: [User, Vote]
-        });
+    res.json({ newAnswer, author });
 
-        // initializes 'isLoggedIn' with a boolean depending
-        // on the state of 'req.session.auth'
-        const isLoggedIn = Boolean(req.session.auth);
+    // NON AJAX CODE
+    // if (validatorErrors.isEmpty()) {
+    //     await newAnswer.save();
+    //     res.redirect(`/questions/${questionId}`);
+    // } else {
+    //     const errors = validatorErrors.array().map((error) => error.msg);
+    //     const question = await Question.findByPk(questionId, {
+    //         include: [User, Answer, Vote]
+    //     });
+    //     const allQuestions = await Question.findAll({
+    //         include: User
+    //     });
+    //     const allAnswers = await Answer.findAll({
+    //         where: { questionId: question.id },
+    //         include: [User, Vote]
+    //     });
 
-        res.render('questions-single', {
-            title: question.title,
-            question,
-            errors,
-            allQuestions,
-            allAnswers,
-            isLoggedIn,
-            csrfToken: req.csrfToken()
-        });
-    }
+    //     // initializes 'isLoggedIn' with a boolean depending
+    //     // on the state of 'req.session.auth'
+    //     const isLoggedIn = Boolean(req.session.auth);
+
+    //     res.render('questions-single', {
+    //         title: question.title,
+    //         question,
+    //         errors,
+    //         allQuestions,
+    //         allAnswers,
+    //         isLoggedIn,
+    //         csrfToken: req.csrfToken()
+    //     });
+    // }
 }));
 
 router.get('/questions/form', csrfProtection, asyncHandler(async (req, res) => {
@@ -258,7 +263,7 @@ router.get('/questions/:id/delete', csrfProtection, asyncHandler(async (req, res
 
 
 // ROUTE FOR DELETING AN ANSWER
-router.delete('/questions/answers/:answerId/delete', csrfProtection, asyncHandler(async (req, res) => {
+router.delete('/questions/answers/:answerId/delete', csrfProtection, asyncHandler(async (req, res, next) => {
     const answerId = req.params.answerId;
     const currentUserId = req.session.auth.userId;
     const answer = await Answer.findByPk(answerId);
@@ -266,6 +271,8 @@ router.delete('/questions/answers/:answerId/delete', csrfProtection, asyncHandle
     if (currentUserId === answer.userId) {
         await answer.destroy();
         res.json({ answerId });
+    } else {
+        next();
     }
 }));
 
