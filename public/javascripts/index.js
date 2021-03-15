@@ -50,7 +50,7 @@ async function addComment(event) {
 
     // CODE FOR HEROKU
     const res = await fetch(`https://stacked-underflow.herokuapp.com/questions/${questionId}/answers`, {
-      method: 'DELETE',
+      method: 'POST',
       headers: {
         'X-CSRF-TOKEN': csrfToken,
         'Content-Type': 'application/json'
